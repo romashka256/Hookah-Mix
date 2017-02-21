@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.tabak_item);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         descriptionTextView.setTextColor(getResources().getColor(R.color.description));
         descriptionTextView.setTypeface(notoSansRegularFont);
+
 
 
     }

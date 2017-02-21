@@ -11,6 +11,7 @@ public class TabakDbSchema {
             public static final String FAMILY = "family";
             public static final String DESCRIPTION = "description";
             public static final String RATING = "rating";
+            public static final String ENTRY_ID = "entry_id";
         }
     }
 }

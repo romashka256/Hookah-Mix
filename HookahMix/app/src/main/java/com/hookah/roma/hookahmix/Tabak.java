@@ -22,4 +22,15 @@ public class Tabak {
     public boolean isfavourite() {
         return isfavourite;
     }
+
+    public String getFamily() {
+        return family;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public UUID getId() {
+        return id;
+    }
 }

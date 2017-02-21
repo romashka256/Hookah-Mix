@@ -11,9 +11,5 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="RatingBar" parent="Theme.AppCompat">
-    <item name="colorControlNormal">#00c7af</item>
-    <item name="colorControlActivated">#00c7af</item>
-    </style>
 
 </resources>
