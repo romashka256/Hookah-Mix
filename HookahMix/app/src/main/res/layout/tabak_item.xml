@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/picture_imageview_item"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/buttonshape" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_textview_item"
+        android:textColor="#FFF"
+        android:text="Грейпфрут"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="18dp"
+        android:textSize="17sp"
+        android:layout_toRightOf="@id/picture_imageview_item"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/family_textview_item"
+        android:textColor="@color/family"
+        android:text="Al fakher"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/name_textview_item"
+        android:textSize="12sp"
+        android:layout_toRightOf="@id/picture_imageview_item"/>
+
+
+</RelativeLayout>
