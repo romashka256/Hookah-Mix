@@ -65,7 +65,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_favourite"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:background="@drawable/buttonshape"
@@ -87,14 +87,6 @@
         android:text="МИКСЫ С ГРЕЙПФРУТОМ"
         android:gravity="center_vertical"
         android:paddingLeft="24dp" />
-
-    <view
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        class="android.support.v4.widget.Space"
-        android:layout_below="@+id/tabak_description"
-        android:layout_marginTop="135dp"
-        android:id="@+id/view" />
 
     <TextView
         android:id="@+id/tabak_description"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cont_todo_list"
+    android:id="@+id/cont_tabak_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -14,9 +14,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:background="@color/colorPrimary"
-        android:id="@+id/lst_todos"
+        android:id="@+id/lst_tabaks"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1" />
 
 </LinearLayout>

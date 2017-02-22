@@ -1,9 +1,13 @@
-package com.hookah.roma.hookahmix;
+package com.hookah.roma.hookahmix.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.gson.Gson;
+import com.hookah.roma.hookahmix.R;
+import com.hookah.roma.hookahmix.models.objects.ListOfTabaks;
+import com.hookah.roma.hookahmix.models.objects.Tabak;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -12,7 +16,6 @@ import java.io.Reader;
 import java.util.List;
 
 import database.TabakDataBase;
-
 
 
 public class LoatInitial  extends AsyncTask<Void,Void,Void> {
@@ -41,8 +44,10 @@ public class LoatInitial  extends AsyncTask<Void,Void,Void> {
 
         ListOfTabaks listOfTabaks = new Gson().fromJson(reader,ListOfTabaks.class);
         List<Tabak> tabakList = listOfTabaks.getTabakArrayList();
-
-        for(Tabak tabak : tabakList){
+        for(Tabak tabak: tabakList){
+            Log.e("tag",tabak.getName() + tabak.getFamily());
+        }
+        for(Tabak tabak: tabakList){
             dataBase.insertOrUpdateData(tabak);
         }
         return null;
@@ -51,4 +56,5 @@ public class LoatInitial  extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void param){
         onDatabaseBuilt.buildComplete();
     }
+
 }

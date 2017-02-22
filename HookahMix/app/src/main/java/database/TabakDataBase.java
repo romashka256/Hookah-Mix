@@ -5,9 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.google.gson.Gson;
-import com.hookah.roma.hookahmix.Tabak;
+import com.hookah.roma.hookahmix.models.objects.Tabak;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,9 @@ public class TabakDataBase {
 
     private TabakDataBaseHelper helper;
     private static TabakDataBase database;
+    private static final String TEXT_TYPE = " TEXT";
+    private static final String COMMA_SEP = ",";
+
 
     public static TabakDataBase getInstance(Context c) {
         if (database == null) {
@@ -40,14 +44,13 @@ public class TabakDataBase {
             do {
                 Tabak tabak = gson.fromJson(
                         c.getString(
-                                c.getColumnIndex(TabakTable.Cols.NAME)
+                                c.getColumnIndex(TabakTable.Cols.DATA)
                         ),
                         Tabak.class);
                 result.add(tabak);
             }
             while (c.moveToNext());
         }
-
         c.close();
         db.close();
         return result;
@@ -60,15 +63,16 @@ public class TabakDataBase {
 
         Gson gson = new Gson();
 
-        if (c.moveToFirst()) {
+       if (c.moveToFirst()) {
             do {
                 val.put(TabakTable.Cols.NAME, tabak.getName());
                 val.put(TabakTable.Cols.RATING, tabak.getRating());
                 val.put(TabakTable.Cols.DESCRIPTION, tabak.getDescription());
                 val.put(TabakTable.Cols.FAMILY, tabak.getFamily());
                 val.put(TabakTable.Cols.FAVOURITE, tabak.isfavourite());
+                val.put(TabakTable.Cols.DATA, gson.toJson(tabak,Tabak.class));
 
-                String selection = TabakTable.Cols.ENTRY_ID + "LIKE ?";
+                String selection = TabakTable.Cols.ENTRY_ID + " LIKE ?";
                 String[] selectionArgs = {
                         String.valueOf(c.getString(c.getColumnIndex(TabakTable.Cols.ENTRY_ID)))
                 };
@@ -85,6 +89,9 @@ public class TabakDataBase {
         val.put(TabakTable.Cols.FAMILY,tabak.getFamily());
         val.put(TabakTable.Cols.FAVOURITE,tabak.isfavourite());
         val.put(TabakTable.Cols.RATING,tabak.getRating());
+        val.put(TabakTable.Cols.DATA,gson.toJson(tabak,Tabak.class));
+
+        Log.e("tag",tabak.getName());
 
         long id = db.insert(TabakTable.NAME,null,val);
         c.close();
@@ -93,9 +100,9 @@ public class TabakDataBase {
 }
 
 
-public class TabakDataBaseHelper extends SQLiteOpenHelper {
+public static class TabakDataBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
-    private static final String DATABASE_NAME = "crimeBase.db";
+    private static final String DATABASE_NAME = "tabaks.db";
     private Context context;
 
 
@@ -107,12 +114,11 @@ public class TabakDataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TabakTable.NAME + "(" + "_id integer primary key autoincrement, " +
-                TabakTable.Cols.UUID + ", " +
                 TabakTable.Cols.NAME + ", " +
                 TabakTable.Cols.DESCRIPTION + ", " +
+                TabakTable.Cols.FAMILY + ", " +
                 TabakTable.Cols.RATING + ", " +
-                TabakTable.Cols.FAVOURITE + ", " +
-                TabakTable.Cols.FAMILY +
+                TabakTable.Cols.FAVOURITE +
                 ")"
         );
     }
