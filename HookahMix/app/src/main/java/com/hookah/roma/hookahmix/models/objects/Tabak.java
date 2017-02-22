@@ -14,7 +14,7 @@ public class Tabak implements Parcelable {
     private String isfavourite;
     private UUID id;
 
-    protected Tabak(Parcel in) {
+    public Tabak(Parcel in) {
         name = in.readString();
         family = in.readString();
         rating = in.readString();
@@ -33,6 +33,30 @@ public class Tabak implements Parcelable {
             return new Tabak[size];
         }
     };
+
+    public Tabak() {
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setIsfavourite(String isfavourite) {
+        this.isfavourite = isfavourite;
+    }
 
     public String getName() {
         return name;

@@ -14,9 +14,6 @@ import com.hookah.roma.hookahmix.models.objects.Tabak;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Roma on 22.02.2017.
- */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.CustomViewHolder> {
 
