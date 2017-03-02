@@ -10,8 +10,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:layout_width="wrap_content"
+        android:id="@+id/textViewofToolBar"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="#6c8ff6"
+        android:textColor="#526dbe"
         android:hint="Страница табака" />
 </android.support.v7.widget.Toolbar>

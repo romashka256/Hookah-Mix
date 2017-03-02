@@ -12,6 +12,9 @@ public class TabaksArrayList {
     @SerializedName("description")
     @Expose
     private String description;
+    @SerializedName("second_name")
+    @Expose
+    private String second_name;
     @SerializedName("rating")
     @Expose
     private String rating;
@@ -22,12 +25,17 @@ public class TabaksArrayList {
     @Expose
     private String family;
 
+    private String Id;
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSecond_name() {return second_name;
     }
 
     public String getDescription() {
@@ -62,4 +70,5 @@ public class TabaksArrayList {
         this.family = family;
     }
 
+    public String getId() { return Id; }
 }

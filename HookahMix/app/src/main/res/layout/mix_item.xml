@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    >
+
+    <TextView
+        android:text="Апельсин, Грейпфрут"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFF"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/mix_name_item" />
+
+    <TextView
+        android:text="Al fakher"
+        android:textSize="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/description"
+        android:layout_below="@id/mix_name_item"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/mix_family_item" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/buttonshape"
+        android:icon="@drawable/mix_icon_button_item"
+        android:layout_toRightOf="@id/mix_name_item"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="22dp"
+        android:id="@+id/mix_button_item" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="1"
+        android:layout_toRightOf="@id/mix_family_item"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="41dp"
+        style="?android:attr/ratingBarStyleSmall"
+        android:id="@+id/mix_ratingbar_item" />
+
+    <TextView
+        android:text="4.1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ratingBar"
+        android:layout_toRightOf="@id/mix_ratingbar_item"
+        android:textSize="11sp"
+        android:layout_marginTop="43dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/mix_ratingbar_int_item" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginRight="19dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="76dp"
+        android:layout_height="1dp"
+        android:background="#445999">
+    </View>
+</RelativeLayout>

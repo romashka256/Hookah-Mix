@@ -14,8 +14,8 @@
         <category android:name="android.intent.category.LAUNCHER"></category>
     </intent-filter>
 </activity>
-        <activity android:name=".TabakPagerActivity"
-            android:parentActivityName=".TabakListActivity">
+        <activity android:name="com.hookah.roma.hookahmix.TabakPagerActivity"
+            android:parentActivityName="com.hookah.roma.hookahmix.TabakListActivity">
         </activity>
 
     </application>

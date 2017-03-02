@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-import java.util.UUID;
 
 public class Tabak  {
     private String name;
@@ -13,7 +12,8 @@ public class Tabak  {
     private String rating;
     private String description;
     private String isfavourite;
-    private UUID id;
+    private String id;
+    private String second_name;
 
     public Tabak() {}
     public void setName(String name) {
@@ -33,18 +33,16 @@ public class Tabak  {
         return name;
     }
     public String getRating() {return rating;}
-    public String isfavourite() {
-        return isfavourite;
-    }
+    public String isfavourite() {return isfavourite;}
     public String getFamily() {
         return family;
     }
     public String getDescription() {
         return description;
     }
-    public UUID getId() {
-        return id;
-    }
+    public String getId() { return id; }
+    public String getPhotoFilename() {return getId();}
+    public String getSecond_name(){return second_name; }
 
 
     @SerializedName("tabaksArrayList")

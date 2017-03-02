@@ -11,85 +11,84 @@
       "name":"Ананас",
       "description":"Со вкусом Ананаса",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Апельсин",
       "description":"Со вкусом Апельсина",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Апельсин с мятой",
       "description":"Со вкусом Апельсина с мятой",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Арбуз",
       "description":"Со вкусом Арбуза",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Арбуз с мятой",
       "description":"со вкусом Арбуза с мятой",
-      "rating":"4.1",
+      "rating":"4.0",
       "favourite":"1",
-      "family":"Al fakher" ,
-      "asd":"Al fakasdllher"
+      "family":"Al fakher"
     },
     {
       "name":"Банан",
       "description":"со вкусом Банана",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Ваниль",
       "description":"со вкусом Ванили",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Виноград",
       "description":"со вкусом Винограда",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Виноград с мятой",
       "description":"со вкусом Винограда с мятой",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Виноград с ягодами",
       "description":"со вкусом Винограда с ягодами",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Вишня",
       "description":"со вкусом Вишни",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     },
     {
       "name":"Вишня с мятой",
       "description":"со вкусом Вишни с мятой",
       "rating":"4.1",
-      "favourite":"1",
+      "favourite":"0",
       "family":"Al fakher"
     }
   ]

@@ -4,10 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -22,7 +24,6 @@ import static database.TabakDbSchema.TabakTable;
 public class TabakLab {
     private static SQLiteDatabase mDataBase;
     private Context mContext;
-
     private static TabakLab sTabakLab;
     private Context mAppContext;
 
@@ -39,9 +40,21 @@ public class TabakLab {
         return sTabakLab;
     }
 
+    public File getPhotoFile(Tabak tabak){
+        File externalFileDir = mContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        if(externalFileDir == null){
+            return null;
+        }
+
+        return new File(externalFileDir, tabak.getPhotoFilename());
+    }
+
+
     private static ContentValues getContentValues(TabaksArrayList tabak) {
         ContentValues val = new ContentValues();
         val.put(TabakTable.Cols.NAME, tabak.getName());
+        val.put(TabakTable.Cols.SECOND_NAME, tabak.getSecond_name());
         val.put(TabakTable.Cols.DESCRIPTION, tabak.getDescription());
         val.put(TabakTable.Cols.FAMILY, tabak.getFamily());
         val.put(TabakTable.Cols.RATING, tabak.getRating());
@@ -102,7 +115,7 @@ public class TabakLab {
         TabakCursorWrapper cursor = queryCrimes(null, null);
         try {
             cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
+            for(int i = 0; i < 13;i++){
                 crimes.add(cursor.getTabak());
                 cursor.moveToNext();
             }
@@ -120,7 +133,11 @@ public class TabakLab {
         }finally {
             cursor.close();
         }
-
+    }
+    public void updateTabak(TabaksArrayList tabak){
+        String name = tabak.getName();
+        ContentValues values = getContentValues(tabak);
+        mDataBase.update(TabakTable.NAME,values,TabakTable.Cols.NAME + " = ?",new String[]{ name });
 
     }
 }

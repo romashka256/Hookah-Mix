@@ -2,6 +2,7 @@
   "tabaksArrayList":[
     {
       "name":"Абрикос",
+      "second_name":"abrikos",
       "description":"Со вкусом Абрикоса",
       "rating":"4.1",
       "favourite":"1",
@@ -9,6 +10,7 @@
     },
     {
       "name":"Ананас",
+      "second_name":"ananas",
       "description":"Со вкусом Ананаса",
       "rating":"4.1",
       "favourite":"1",
@@ -16,6 +18,7 @@
     },
     {
       "name":"Апельсин",
+      "second_name":"apelsin",
       "description":"Со вкусом Апельсина",
       "rating":"4.1",
       "favourite":"1",
@@ -23,6 +26,7 @@
     },
     {
       "name":"Апельсин с мятой",
+      "second_name":"apelsin s myatoy",
       "description":"Со вкусом Апельсина с мятой",
       "rating":"4.1",
       "favourite":"1",
@@ -30,6 +34,7 @@
     },
     {
       "name":"Арбуз",
+      "second_name":"arbyz",
       "description":"Со вкусом Арбуза",
       "rating":"4.1",
       "favourite":"1",
@@ -37,6 +42,7 @@
     },
     {
       "name":"Арбуз с мятой",
+      "second_name":"arbyz s myatoy",
       "description":"со вкусом Арбуза с мятой",
       "rating":"4.1",
       "favourite":"1",
@@ -45,6 +51,7 @@
     },
     {
       "name":"Банан",
+      "second_name": "banan",
       "description":"со вкусом Банана",
       "rating":"4.1",
       "favourite":"1",
@@ -52,6 +59,7 @@
     },
     {
       "name":"Ваниль",
+      "second_name":"vanil",
       "description":"со вкусом Ванили",
       "rating":"4.1",
       "favourite":"1",
@@ -59,6 +67,7 @@
     },
     {
       "name":"Виноград",
+      "second_name":"vinograd",
       "description":"со вкусом Винограда",
       "rating":"4.1",
       "favourite":"1",
@@ -66,6 +75,7 @@
     },
     {
       "name":"Виноград с мятой",
+      "second_name":"vinograd s myatoy",
       "description":"со вкусом Винограда с мятой",
       "rating":"4.1",
       "favourite":"1",
@@ -73,6 +83,7 @@
     },
     {
       "name":"Виноград с ягодами",
+      "second_name":"vinograd s yagodami",
       "description":"со вкусом Винограда с ягодами",
       "rating":"4.1",
       "favourite":"1",
@@ -80,6 +91,7 @@
     },
     {
       "name":"Вишня",
+      "second_name":"vishnya",
       "description":"со вкусом Вишни",
       "rating":"4.1",
       "favourite":"1",
@@ -87,6 +99,7 @@
     },
     {
       "name":"Вишня с мятой",
+      "second_name":"vishnya s myatoy",
       "description":"со вкусом Вишни с мятой",
       "rating":"4.1",
       "favourite":"1",
