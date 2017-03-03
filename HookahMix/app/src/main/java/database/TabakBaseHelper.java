@@ -20,14 +20,19 @@ import static database.TabakDbSchema.TabakTable;
                 TabakTable.Cols.RATING + ", " +
                 TabakTable.Cols.FAVOURITE +
                 ")";
-        private static final String EXEC_SQL_MIX_TABLE = "create table " + TabakTable.NAME + "(" + "_id integer primary key autoincrement, " +
+        private static final String EXEC_SQL_MIX_TABLE = "create table " + MixTable.NAME + "(" + "_id integer primary key autoincrement, " +
                 MixTable.Cols.INGRED1 + ", " +
                 MixTable.Cols.INGRED2 + ", " +
                 MixTable.Cols.INGRED3 + ", " +
                 MixTable.Cols.INGRED4 + ", " +
+                MixTable.Cols.PROC1 + ", " +
+                MixTable.Cols.PROC2 + ", " +
+                MixTable.Cols.PROC3 + ", " +
+                MixTable.Cols.PROC4 + ", " +
                 MixTable.Cols.DESCRIPTION + ", " +
                 MixTable.Cols.RATING + ", " +
-                MixTable.Cols.FAVOURITE +
+                MixTable.Cols.FAVOURITE + ", " +
+                MixTable.Cols.FAMILY +
                 ")";
         public TabakBaseHelper(Context context) {
             super(context, DATABASE_NAME, null, VERSION);

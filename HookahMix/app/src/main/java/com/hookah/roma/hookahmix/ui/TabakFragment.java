@@ -1,6 +1,7 @@
-package com.hookah.roma.hookahmix;
+package com.hookah.roma.hookahmix.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
@@ -19,6 +20,9 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.hookah.roma.hookahmix.R;
+import com.hookah.roma.hookahmix.Tabak;
+import com.hookah.roma.hookahmix.TabakLab;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -116,9 +120,16 @@ public class TabakFragment extends Fragment {
         mDescriptionTextView.setTypeface(notoSansRegularFont);
 
         mImageView = (ImageView) v.findViewById(R.id.imageView);
-        Picasso.with(getActivity()).load(R.drawable.ananas).resizeDimen(R.dimen.image_size_w,R.dimen.image_size_h).centerCrop().into(mImageView);
-        mImageView.setColorFilter(R.color.colorPrimaryea, PorterDuff.Mode.DARKEN);
+        Picasso.with(getActivity()).load(R.drawable.ananas).resizeDimen(R.dimen.image_size_w,R.dimen.image_size_h).into(mImageView);
+        mImageView.setColorFilter(R.color.colorPrimaryea, PorterDuff.Mode.LIGHTEN);
 
+        mFavouriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),MixActivity.class);
+                startActivity(intent);
+            }
+        });
         return v;
     }
 }

@@ -8,14 +8,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name=".TabakListActivity">
+        <activity android:name=".ui.TabakListActivity">
     <intent-filter>
         <action android:name="android.intent.action.MAIN"></action>
         <category android:name="android.intent.category.LAUNCHER"></category>
     </intent-filter>
 </activity>
-        <activity android:name="com.hookah.roma.hookahmix.TabakPagerActivity"
-            android:parentActivityName="com.hookah.roma.hookahmix.TabakListActivity">
+        <activity android:name="com.hookah.roma.hookahmix.ui.TabakPagerActivity"
+            android:parentActivityName="com.hookah.roma.hookahmix.ui.TabakListActivity">
+        </activity>
+
+        <activity android:name="com.hookah.roma.hookahmix.ui.MixActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
         </activity>
 
     </application>

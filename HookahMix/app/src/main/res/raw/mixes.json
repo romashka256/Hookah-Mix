@@ -1,0 +1,68 @@
+{
+  "mixesArrayList":[
+    {
+      "ingred1": "Вишня с мятой",
+      "ingred2": "Апельсин",
+      "ingred3":"Ананас",
+      "description" : "Хорошая альтернатива классическому мультифрукту",
+      "proc1": "60",
+      "proc2":"20",
+      "proc3":"20",
+      "rating":"4.2",
+      "family":"Al fakher",
+      "favourite":"1"
+    },
+    {
+      "ingred1": "Арбуз",
+      "ingred2": "Виноград",
+      "description" : "Старо, проверено, но мы не можем не выложить этот микс.",
+      "proc1": "50",
+      "proc2":"50",
+      "rating":"4.2",
+      "family":"Al fakher",
+      "favourite":"1"
+    },
+    {
+      "ingred1": "Банан",
+      "ingred2": "Виноград",
+      "description" : "Яркий вкус винограда плавно переходящий в легкий, чуть сладкий банан.",
+      "proc1": "60",
+      "proc2":"40",
+      "rating":"4.2",
+      "family":"Al fakher",
+      "favourite":"1"
+    },
+    {
+      "ingred1": "Арбуз",
+      "ingred2": "Мята",
+      "ingred3":"Ваниль",
+      "description" : "Сильно выраженный вкус арбуза и мяты медленно превращается в сливочно-ванильный на выдохе.",
+      "proc1": "60",
+      "proc2":"20",
+      "proc3":"20",
+      "rating":"4.2",
+      "family":"Al fakher",
+      "favourite":"1"
+    },
+    {
+      "ingred1": "Арбуз",
+      "ingred2": "Вишня",
+      "description" : "Довольно свежий микс арбуза с легким привкусом вишни.",
+      "proc1": "60",
+      "proc2":"40",
+      "rating":"4.2",
+      "family":"Al fakher",
+      "favourite":"1"
+    },
+    {
+      "ingred1": "Ваниль",
+      "ingred2": "Лемон",
+      "description" : "Микс с нежным вкусом сладковатого лимона и ароматом свежей ванили.",
+      "proc1": "60",
+      "proc2":"40",
+      "rating":"4.2",
+      "family":"Al fakher",
+      "favourite":"1"
+    }
+  ]
+}

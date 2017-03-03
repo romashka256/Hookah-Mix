@@ -26,15 +26,15 @@
         android:layout_marginLeft="20dp"
         android:id="@+id/mix_family_item" />
 
-    <Button
+    <ImageView
+        android:layout_marginLeft="312dp"
+        android:layout_marginTop="22dp"
+        android:id="@+id/mix_button_item"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:src="@mipmap/ic_add"
         android:background="@drawable/buttonshape"
-        android:icon="@drawable/mix_icon_button_item"
-        android:layout_toRightOf="@id/mix_name_item"
-        android:layout_marginLeft="130dp"
-        android:layout_marginTop="22dp"
-        android:id="@+id/mix_button_item" />
+        android:onClick="onImageViewListMixItemClicked"/>
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
         android:numStars="1"
         android:layout_toRightOf="@id/mix_family_item"
         android:layout_marginLeft="18dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="43dp"
         style="?android:attr/ratingBarStyleSmall"
         android:id="@+id/mix_ratingbar_item" />
 

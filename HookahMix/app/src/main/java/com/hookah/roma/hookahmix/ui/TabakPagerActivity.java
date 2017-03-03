@@ -1,4 +1,4 @@
-package com.hookah.roma.hookahmix;
+package com.hookah.roma.hookahmix.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+
+import com.hookah.roma.hookahmix.R;
+import com.hookah.roma.hookahmix.Tabak;
+import com.hookah.roma.hookahmix.TabakLab;
 
 import java.util.List;
 

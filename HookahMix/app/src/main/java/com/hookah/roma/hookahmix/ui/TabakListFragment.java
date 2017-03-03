@@ -1,8 +1,9 @@
-package com.hookah.roma.hookahmix;
+package com.hookah.roma.hookahmix.ui;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +20,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hookah.roma.hookahmix.R;
+import com.hookah.roma.hookahmix.Tabak;
+import com.hookah.roma.hookahmix.TabakLab;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -161,6 +165,8 @@ public class TabakListFragment extends Fragment {
             holder.mNameTextView.setText(tabak.getName());
             holder.mFamilyTextView.setText(tabak.getFamily());
             holder.mRatingTextView.setText(tabak.getRating());
+            Typeface notoSansBoldFont = Typeface.createFromAsset(getResources().getAssets(),"fonts/NotoSans-Bold.ttf");
+            holder.mRatingTextView.setTypeface(notoSansBoldFont);
             if(resId != 0) {
                 Picasso.with(context).load(resId).resizeDimen(R.dimen.image_size_item, R.dimen.image_size_item).centerCrop().into(holder.mImageViewItem);
             }

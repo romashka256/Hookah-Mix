@@ -3,44 +3,30 @@ package com.hookah.roma.hookahmix;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MixesArrayList {
+import java.util.List;
 
-    @SerializedName("ingred1")
-    @Expose
+public class Mix {
+
     private String ingred1;
-    @SerializedName("ingred2")
-    @Expose
     private String ingred2;
-    @SerializedName("ingred3")
-    @Expose
     private String ingred3;
-    @SerializedName("ingred4")
-    @Expose
     private String ingred4;
-    @SerializedName("description")
-    @Expose
-    private String description;
-    @SerializedName("proc1")
-    @Expose
     private String proc1;
-    @SerializedName("proc2")
-    @Expose
     private String proc2;
-    @SerializedName("proc3")
-    @Expose
     private String proc3;
-    @SerializedName("proc4")
-    @Expose
     private String proc4;
-    @SerializedName("rating")
-    @Expose
+    private String description;
     private String rating;
-    @SerializedName("family")
-    @Expose
-    private String family;
-    @SerializedName("favourite")
-    @Expose
     private String favourite;
+    private String family;
+
+    public String getFamily() {
+        return family;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
+    }
 
     public String getIngred1() {
         return ingred1;
@@ -72,14 +58,6 @@ public class MixesArrayList {
 
     public void setIngred4(String ingred4) {
         this.ingred4 = ingred4;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getProc1() {
@@ -114,6 +92,14 @@ public class MixesArrayList {
         this.proc4 = proc4;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getRating() {
         return rating;
     }
@@ -122,20 +108,24 @@ public class MixesArrayList {
         this.rating = rating;
     }
 
-    public String getFamily() {
-        return family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
-    }
-
     public String getFavourite() {
         return favourite;
     }
 
     public void setFavourite(String favourite) {
         this.favourite = favourite;
+    }
+
+    @SerializedName("mixesArrayList")
+    @Expose
+    private List<MixesArrayList> mixesArrayList = null;
+
+    public List<MixesArrayList> getMixesArrayList() {
+        return mixesArrayList;
+    }
+
+    public void setMixesArrayList(List<MixesArrayList> mixesArrayList) {
+        this.mixesArrayList = mixesArrayList;
     }
 
 }

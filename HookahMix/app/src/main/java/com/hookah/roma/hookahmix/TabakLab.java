@@ -18,6 +18,7 @@ import java.util.List;
 
 import database.TabakBaseHelper;
 
+import static database.TabakDbSchema.MixTable;
 import static database.TabakDbSchema.TabakTable;
 
 
@@ -31,6 +32,7 @@ public class TabakLab {
         mContext = context.getApplicationContext();
         mDataBase = new TabakBaseHelper(mContext).getWritableDatabase();
         LoadTabaksFromJson();
+        LoadMixFromJson();
     }
 
     public static TabakLab get(Context c) {
@@ -62,6 +64,27 @@ public class TabakLab {
         return val;
     }
 
+    private static ContentValues getContentValues(MixesArrayList mix){
+        ContentValues val = new ContentValues();
+        val.put(MixTable.Cols.INGRED1,mix.getIngred1());
+        val.put(MixTable.Cols.INGRED2,mix.getIngred2());
+        val.put(MixTable.Cols.INGRED3,mix.getIngred3());
+        val.put(MixTable.Cols.INGRED4,mix.getIngred4());
+        val.put(MixTable.Cols.PROC1,mix.getProc1());
+        val.put(MixTable.Cols.PROC2,mix.getProc2());
+        val.put(MixTable.Cols.PROC3,mix.getProc3());
+        val.put(MixTable.Cols.PROC4,mix.getProc4());
+        val.put(MixTable.Cols.DESCRIPTION,mix.getDescription());
+        val.put(MixTable.Cols.RATING,mix.getRating());
+        val.put(MixTable.Cols.FAMILY,mix.getFamily());
+        val.put(MixTable.Cols.FAVOURITE,mix.getFavourite());
+
+        return val;
+
+    }
+
+
+
     private void LoadTabaksFromJson() {
         InputStream raw = mContext.getResources().openRawResource(R.raw.tabaks);
         Reader reader = new BufferedReader(new InputStreamReader(raw));
@@ -70,6 +93,16 @@ public class TabakLab {
 
         for(TabaksArrayList tabak : tabakList){
             mDataBase.insert(TabakTable.NAME,null,getContentValues(tabak));
+        }
+    }
+    private void LoadMixFromJson() {
+        InputStream raw = mContext.getResources().openRawResource(R.raw.mixes);
+        Reader reader = new BufferedReader(new InputStreamReader(raw));
+        Mix listOfMixess = new Gson().fromJson(reader,Mix.class);
+        List<MixesArrayList> mixesList = listOfMixess.getMixesArrayList();
+
+        for(MixesArrayList mix : mixesList){
+            mDataBase.insert(MixTable.NAME,null,getContentValues(mix));
         }
     }
 
@@ -96,7 +129,7 @@ public class TabakLab {
         return patterns*/
 
 
-    private TabakCursorWrapper queryCrimes(String whereClause, String[] whereArgs) {
+    private TabakCursorWrapper queryTabaks(String whereClause, String[] whereArgs) {
         Cursor cursor = mDataBase.query(
                 TabakTable.NAME,
                 null,
@@ -108,11 +141,27 @@ public class TabakLab {
         return new TabakCursorWrapper(cursor);
     }
 
+
+
+ private TabakCursorWrapper queryMixes(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDataBase.query(
+                MixTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null);
+        return new TabakCursorWrapper(cursor);
+    }
+
+
+
     // Return entire list of crimes
     public List<Tabak> getTabaks() {
         List<Tabak> crimes = new ArrayList<>();
 
-        TabakCursorWrapper cursor = queryCrimes(null, null);
+        TabakCursorWrapper cursor = queryTabaks(null, null);
         try {
             cursor.moveToFirst();
             for(int i = 0; i < 13;i++){
@@ -125,8 +174,30 @@ public class TabakLab {
         return crimes;
     }
 
+
+
+
+    public List<Mix> getMixes() {
+        List<Mix> mixes = new ArrayList<>();
+
+        TabakCursorWrapper cursor = queryMixes(null, null);
+        try {
+            cursor.moveToFirst();
+            for(int i = 0; i < 13;i++){
+                mixes.add(cursor.getMix());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+        return mixes;
+    }
+
+
+
+
     public Tabak getTabak(String name){
-        TabakCursorWrapper cursor = queryCrimes(TabakTable.Cols.NAME + " = ?",new String[]{name});
+        TabakCursorWrapper cursor = queryTabaks(TabakTable.Cols.NAME + " = ?",new String[]{name});
         try{
             cursor.moveToFirst();
             return cursor.getTabak();
@@ -134,6 +205,21 @@ public class TabakLab {
             cursor.close();
         }
     }
+
+
+
+    public Mix getMix(String description){
+        TabakCursorWrapper cursor = queryTabaks(MixTable.Cols.DESCRIPTION + " = ?",new String[]{description});
+        try{
+            cursor.moveToFirst();
+            return cursor.getMix();
+        }finally {
+            cursor.close();
+        }
+    }
+
+
+
     public void updateTabak(TabaksArrayList tabak){
         String name = tabak.getName();
         ContentValues values = getContentValues(tabak);
