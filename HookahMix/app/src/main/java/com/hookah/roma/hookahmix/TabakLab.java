@@ -42,10 +42,10 @@ public class TabakLab {
         return sTabakLab;
     }
 
-    public File getPhotoFile(Tabak tabak){
+    public File getPhotoFile(Tabak tabak) {
         File externalFileDir = mContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
-        if(externalFileDir == null){
+        if (externalFileDir == null) {
             return null;
         }
 
@@ -64,45 +64,45 @@ public class TabakLab {
         return val;
     }
 
-    private static ContentValues getContentValues(MixesArrayList mix){
+    private static ContentValues getContentValues(MixesArrayList mix) {
         ContentValues val = new ContentValues();
-        val.put(MixTable.Cols.INGRED1,mix.getIngred1());
-        val.put(MixTable.Cols.INGRED2,mix.getIngred2());
-        val.put(MixTable.Cols.INGRED3,mix.getIngred3());
-        val.put(MixTable.Cols.INGRED4,mix.getIngred4());
-        val.put(MixTable.Cols.PROC1,mix.getProc1());
-        val.put(MixTable.Cols.PROC2,mix.getProc2());
-        val.put(MixTable.Cols.PROC3,mix.getProc3());
-        val.put(MixTable.Cols.PROC4,mix.getProc4());
-        val.put(MixTable.Cols.DESCRIPTION,mix.getDescription());
-        val.put(MixTable.Cols.RATING,mix.getRating());
-        val.put(MixTable.Cols.FAMILY,mix.getFamily());
-        val.put(MixTable.Cols.FAVOURITE,mix.getFavourite());
+        val.put(MixTable.Cols.INGRED1, mix.getIngred1());
+        val.put(MixTable.Cols.INGRED2, mix.getIngred2());
+        val.put(MixTable.Cols.INGRED3, mix.getIngred3());
+        val.put(MixTable.Cols.INGRED4, mix.getIngred4());
+        val.put(MixTable.Cols.PROC1, mix.getProc1());
+        val.put(MixTable.Cols.PROC2, mix.getProc2());
+        val.put(MixTable.Cols.PROC3, mix.getProc3());
+        val.put(MixTable.Cols.PROC4, mix.getProc4());
+        val.put(MixTable.Cols.DESCRIPTION, mix.getDescription());
+        val.put(MixTable.Cols.RATING, mix.getRating());
+        val.put(MixTable.Cols.FAMILY, mix.getFamily());
+        val.put(MixTable.Cols.FAVOURITE, mix.getFavourite());
 
         return val;
 
     }
 
 
-
     private void LoadTabaksFromJson() {
         InputStream raw = mContext.getResources().openRawResource(R.raw.tabaks);
         Reader reader = new BufferedReader(new InputStreamReader(raw));
-        Tabak listOfTabaks = new Gson().fromJson(reader,Tabak.class);
+        Tabak listOfTabaks = new Gson().fromJson(reader, Tabak.class);
         List<TabaksArrayList> tabakList = listOfTabaks.getTabaksArrayList();
 
-        for(TabaksArrayList tabak : tabakList){
-            mDataBase.insert(TabakTable.NAME,null,getContentValues(tabak));
+        for (TabaksArrayList tabak : tabakList) {
+            mDataBase.insert(TabakTable.NAME, null, getContentValues(tabak));
         }
     }
+
     private void LoadMixFromJson() {
         InputStream raw = mContext.getResources().openRawResource(R.raw.mixes);
         Reader reader = new BufferedReader(new InputStreamReader(raw));
-        Mix listOfMixess = new Gson().fromJson(reader,Mix.class);
+        Mix listOfMixess = new Gson().fromJson(reader, Mix.class);
         List<MixesArrayList> mixesList = listOfMixess.getMixesArrayList();
 
-        for(MixesArrayList mix : mixesList){
-            mDataBase.insert(MixTable.NAME,null,getContentValues(mix));
+        for (MixesArrayList mix : mixesList) {
+            mDataBase.insert(MixTable.NAME, null, getContentValues(mix));
         }
     }
 
@@ -142,8 +142,7 @@ public class TabakLab {
     }
 
 
-
- private TabakCursorWrapper queryMixes(String whereClause, String[] whereArgs) {
+    private TabakCursorWrapper queryMixes(String whereClause, String[] whereArgs) {
         Cursor cursor = mDataBase.query(
                 MixTable.NAME,
                 null,
@@ -156,7 +155,6 @@ public class TabakLab {
     }
 
 
-
     // Return entire list of crimes
     public List<Tabak> getTabaks() {
         List<Tabak> crimes = new ArrayList<>();
@@ -164,7 +162,7 @@ public class TabakLab {
         TabakCursorWrapper cursor = queryTabaks(null, null);
         try {
             cursor.moveToFirst();
-            for(int i = 0; i < 13;i++){
+            for (int i = 0; i < 13; i++) {
                 crimes.add(cursor.getTabak());
                 cursor.moveToNext();
             }
@@ -175,15 +173,13 @@ public class TabakLab {
     }
 
 
-
-
     public List<Mix> getMixes() {
         List<Mix> mixes = new ArrayList<>();
 
         TabakCursorWrapper cursor = queryMixes(null, null);
         try {
             cursor.moveToFirst();
-            for(int i = 0; i < 13;i++){
+            for (int i = 0; i < 13; i++) {
                 mixes.add(cursor.getMix());
                 cursor.moveToNext();
             }
@@ -194,28 +190,43 @@ public class TabakLab {
     }
 
 
-
-
-    public Tabak getTabak(String name){
-        TabakCursorWrapper cursor = queryTabaks(TabakTable.Cols.NAME + " = ?",new String[]{name});
-        try{
+    public Tabak getTabak(String name) {
+        TabakCursorWrapper cursor = queryTabaks(TabakTable.Cols.NAME + " = ?", new String[]{name});
+        try {
             cursor.moveToFirst();
             return cursor.getTabak();
-        }finally {
+        } finally {
             cursor.close();
         }
     }
 
 
-
-    public Mix getMix(String description){
-        TabakCursorWrapper cursor = queryTabaks(MixTable.Cols.DESCRIPTION + " = ?",new String[]{description});
-        try{
+    public Mix getMix(String description) {
+        TabakCursorWrapper cursor = queryTabaks(MixTable.Cols.DESCRIPTION + " = ?", new String[]{description});
+        try {
             cursor.moveToFirst();
             return cursor.getMix();
-        }finally {
+        } finally {
             cursor.close();
         }
+    }
+
+    public ArrayList<Mix> getMixesWithTabak(String name) {
+        ArrayList<Mix> mixes = new ArrayList<>();
+        int i = 0;
+        TabakCursorWrapper cursor = queryTabaks(MixTable.Cols.DESCRIPTION + " = ?", new String[]{name});
+        try {
+            if (i == 0) {
+                cursor.moveToFirst();
+            }
+            while(cursor.isAfterLast()) {
+                cursor.moveToNext();
+                mixes.add(i++, cursor.getMix());
+            }
+        } finally {
+            cursor.close();
+        }
+        return mixes;
     }
 
 

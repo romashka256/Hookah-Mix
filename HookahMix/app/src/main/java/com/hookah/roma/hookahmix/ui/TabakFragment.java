@@ -25,8 +25,6 @@ import com.hookah.roma.hookahmix.Tabak;
 import com.hookah.roma.hookahmix.TabakLab;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
-
 public class TabakFragment extends Fragment {
     private Tabak mTabak;
     private Button mFavouriteButton;
@@ -39,31 +37,31 @@ public class TabakFragment extends Fragment {
     private RatingBar mRatingBar;
     private Context context;
     private TextView mRatingBarInt;
-    private File mPhotoFile;
+    private TextView mMixWithTextView;
     public static final String EXTRA_TABAK_NAME = "com.hookah.roma.hookahmix.name";
 
-    public static TabakFragment newInstance(String name){
+    public static TabakFragment newInstance(String name) {
         Bundle args = new Bundle();
-        args.putSerializable(EXTRA_TABAK_NAME,name);
+        args.putSerializable(EXTRA_TABAK_NAME, name);
         TabakFragment fragment = new TabakFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate( Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-       String tabakName = (String) getArguments().get(EXTRA_TABAK_NAME);
+        String tabakName = (String) getArguments().get(EXTRA_TABAK_NAME);
         mTabak = TabakLab.get(getActivity()).getTabak(tabakName);
 
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu,inflater);
-        inflater.inflate(R.menu.tabak_items,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.tabak_items, menu);
     }
 
     @Override
@@ -78,16 +76,19 @@ public class TabakFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tabak_fragment,container,false);
-        context=getActivity();
-        int resId = context.getResources().getIdentifier("ananas","drawable",context.getPackageName());
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.tabak_fragment, container, false);
+        context = getActivity();
+        int resId = context.getResources().getIdentifier("ananas", "drawable", context.getPackageName());
 
         mNameTextView = (TextView) v.findViewById(R.id.tabak_name);
         mNameTextView.setText(mTabak.getName());
 
         mDescriptionTextView = (TextView) v.findViewById(R.id.tabak_description);
         mDescriptionTextView.setText(mTabak.getDescription());
+
+        mMixWithTextView = (TextView) v.findViewById(R.id.mixWithTextView);
+        mMixWithTextView.setText("МИКСЫ С  \"" + mTabak.getName().toUpperCase() + "\"");
 
         mFamilyTextView = (TextView) v.findViewById(R.id.tabak_family);
         mFamilyTextView.setText(mTabak.getFamily());
@@ -111,22 +112,22 @@ public class TabakFragment extends Fragment {
 
         mRatingBarInt = (TextView) v.findViewById(R.id.rating_int);
 
-        Typeface notoSansBoldFont = Typeface.createFromAsset(getResources().getAssets(),"fonts/NotoSans-Bold.ttf");
+        Typeface notoSansBoldFont = Typeface.createFromAsset(getResources().getAssets(), "fonts/NotoSans-Bold.ttf");
         mRatingBarInt.setTypeface(notoSansBoldFont);
 
-        Typeface notoSansRegularFont = Typeface.createFromAsset(getResources().getAssets(),"fonts/NotoSansUI-Regular.ttf");
+        Typeface notoSansRegularFont = Typeface.createFromAsset(getResources().getAssets(), "fonts/NotoSansUI-Regular.ttf");
 
         mDescriptionTextView.setTextColor(getResources().getColor(R.color.description));
         mDescriptionTextView.setTypeface(notoSansRegularFont);
 
         mImageView = (ImageView) v.findViewById(R.id.imageView);
-        Picasso.with(getActivity()).load(R.drawable.ananas).resizeDimen(R.dimen.image_size_w,R.dimen.image_size_h).into(mImageView);
+        Picasso.with(getActivity()).load(R.drawable.ananas).fit().into(mImageView);
         mImageView.setColorFilter(R.color.colorPrimaryea, PorterDuff.Mode.LIGHTEN);
 
         mFavouriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),MixActivity.class);
+                Intent intent = new Intent(getActivity(), MixActivity.class);
                 startActivity(intent);
             }
         });

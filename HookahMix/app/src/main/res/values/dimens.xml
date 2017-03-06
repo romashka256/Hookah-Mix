@@ -3,6 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="image_size_item">60dp</dimen>
-    <dimen name="image_size_w">400dp</dimen>
-    <dimen name="image_size_h">145dp</dimen>
+    <dimen name="image_size_w">320dp</dimen>
+    <dimen name="image_size_h">130dp</dimen>
 </resources>

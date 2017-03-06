@@ -8,6 +8,12 @@
     <include
         android:id="@+id/tool_bar"
         layout="@layout/abs_layout" />
+    <View
+        android:layout_below="@id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:translationZ="10dp"
+        android:background="@drawable/toolbar_dropshadow" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,6 +23,11 @@
         android:background="@color/colorAccent"
         android:scaleType="fitStart"
         android:adjustViewBounds="true"/>
+    <View
+        android:layout_below="@id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@drawable/toolbar_dropshadow" />
 
     <TextView
         android:id="@+id/tabak_name"
@@ -74,6 +85,7 @@
         android:layout_marginTop="220dp"
         android:drawableLeft="@drawable/ic_favorite_black_24dp"
         android:padding="15dp"
+        android:paddingBottom="30dp"
         android:layout_marginLeft="276dp"
         />
 
@@ -97,9 +109,29 @@
         android:layout_height="35dp"
         android:background="#445892"
         android:textColor="#FFF"
+        android:layout_alignParentEnd="true"
         android:text="МИКСЫ С ГРЕЙПФРУТОМ"
         android:gravity="center_vertical"
+        android:id="@+id/mixWithTextView"
         android:paddingLeft="24dp" />
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/tabak_description"
+        android:layout_alignEnd="@id/mixWithTextView"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_right_arrow"
+        android:adjustViewBounds="true"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_view_fragment_tabak"
+        android:background="#556cb0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/mixWithTextView" />
+
 
 
 </RelativeLayout>

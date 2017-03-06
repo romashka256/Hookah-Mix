@@ -8,4 +8,5 @@
     <color name="ratingBar">#00c7af</color>
     <color name="description">#a9ffffff</color>
     <color name="family">#41ffffff</color>
+    <color name="white">#FFF</color>
 </resources>

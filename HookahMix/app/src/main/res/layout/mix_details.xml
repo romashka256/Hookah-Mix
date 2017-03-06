@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/description_mix_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="31dp"
+        android:layout_marginRight="30dp"
+        android:lineSpacingMultiplier="1.1"
+        android:text="Задача организации, в особенности же постоянный количественный рост и сфера нашей"
+        android:textColor="@color/family"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/ingred1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="42dp"
+        android:text="Грейпфрут"
+        android:textColor="@color/white" />
+
+    <View
+        android:id="@+id/separator_mix_details1"
+        android:layout_width="15dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="52dp"
+        android:background="@color/ratingBar"></View>
+
+    <TextView
+        android:id="@+id/ingred2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ingred1"
+        android:layout_marginLeft="70dp"
+        android:text="Грейпфрут"
+        android:textColor="@color/white" />
+
+    <View
+        android:id="@+id/separator_mix_details2"
+        android:layout_width="15dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="71.5dp"
+        android:background="@color/ratingBar"></View>
+
+    <LinearLayout
+        android:id="@+id/layout_ingred3"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/ingred2"
+        android:layout_alignLeft="@+id/layout_ingred4"
+        android:layout_alignStart="@+id/layout_ingred4">
+        <View
+            android:id="@+id/separator_mix_details3"
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10.5dp"
+            android:background="@color/ratingBar"></View>
+        <TextView
+            android:id="@+id/ingred3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Грейпфрут"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/proc3"
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:gravity="right"
+            android:text="10%"
+            android:textColor="@color/white" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_ingred4"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_ingred3"
+        android:layout_marginLeft="45dp"
+        android:orientation="horizontal">
+        <View
+            android:id="@+id/separator_mix_details4"
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/ratingBar"></View>
+    <TextView
+        android:id="@+id/ingred4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_ingred3"
+        android:layout_marginLeft="10dp"
+        android:text="Грейпфрут"
+        android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/proc4"
+            android:layout_width="fill_parent"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingred1"
+            android:text="10%"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/proc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="190dp"
+        android:gravity="end"
+        android:layout_marginTop="42dp"
+        android:text="10%"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/proc2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ingred1"
+        android:layout_marginLeft="190dp"
+        android:text="10%"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

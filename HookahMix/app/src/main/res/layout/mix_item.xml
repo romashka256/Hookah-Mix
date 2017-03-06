@@ -6,6 +6,11 @@
     android:background="@color/colorPrimary"
     >
 
+    <include
+        layout="@layout/mix_details"
+        android:visibility="gone"
+        android:id="@+id/include_details_mix">
+    </include>
     <TextView
         android:text="Апельсин, Грейпфрут"
         android:layout_width="wrap_content"
@@ -32,9 +37,9 @@
         android:id="@+id/mix_button_item"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@mipmap/ic_add"
+        android:src="@mipmap/ic_moreinformation"
         android:background="@drawable/buttonshape"
-        android:onClick="onImageViewListMixItemClicked"/>
+    />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -57,6 +62,7 @@
         android:layout_marginLeft="5dp"
         android:id="@+id/mix_ratingbar_int_item" />
     <View
+        android:id="@+id/separator_mix_list"
         android:layout_width="match_parent"
         android:layout_marginRight="19dp"
         android:layout_marginLeft="19dp"
