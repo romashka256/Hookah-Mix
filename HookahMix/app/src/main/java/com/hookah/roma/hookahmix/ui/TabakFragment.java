@@ -6,8 +6,11 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,10 +23,13 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.hookah.roma.hookahmix.Mix;
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.Tabak;
 import com.hookah.roma.hookahmix.TabakLab;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class TabakFragment extends Fragment {
     private Tabak mTabak;
@@ -38,6 +44,13 @@ public class TabakFragment extends Fragment {
     private Context context;
     private TextView mRatingBarInt;
     private TextView mMixWithTextView;
+    private RecyclerView mRecyclerView;
+    private ArrayList<Mix> mMixes;
+    private TabakLab mTabakLab;
+    private ArrayList<Mix> mMixs;
+    private Mix mMix;
+    private MixWithTabakAdapter mAdapter;
+    private String tabakName;
     public static final String EXTRA_TABAK_NAME = "com.hookah.roma.hookahmix.name";
 
     public static TabakFragment newInstance(String name) {
@@ -51,9 +64,11 @@ public class TabakFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setHasOptionsMenu(true);
-        String tabakName = (String) getArguments().get(EXTRA_TABAK_NAME);
+
+        AsynkTas task = new AsynkTas();
+        task.execute();
+        tabakName = (String) getArguments().get(EXTRA_TABAK_NAME);
         mTabak = TabakLab.get(getActivity()).getTabak(tabakName);
 
     }
@@ -83,6 +98,10 @@ public class TabakFragment extends Fragment {
 
         mNameTextView = (TextView) v.findViewById(R.id.tabak_name);
         mNameTextView.setText(mTabak.getName());
+
+        LinearLayoutManager lm = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.list_view_fragment_tabak);
+        mRecyclerView.setLayoutManager(lm);
 
         mDescriptionTextView = (TextView) v.findViewById(R.id.tabak_description);
         mDescriptionTextView.setText(mTabak.getDescription());
@@ -131,7 +150,67 @@ public class TabakFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        mRecyclerView.setAdapter(mAdapter);
         return v;
+    }
+
+    private class MixWithTabakHolder extends RecyclerView.ViewHolder{
+
+        private TextView mNameTextView;
+        private TextView mFamilyTextView;
+        private TextView mRatingTextView;
+
+        public MixWithTabakHolder(View itemView) {
+            super(itemView);
+
+            mNameTextView = (TextView) itemView.findViewById(R.id.name_textview_item_tabak_fragment);
+            mFamilyTextView = (TextView) itemView.findViewById(R.id.family_textview_item_tabak_fragment);
+            mRatingTextView = (TextView) itemView.findViewById(R.id.rating_textview_item_tabak_fragment);
+        }
+        public void bindViews() {
+            if (mMix.getIngred3() == null) {
+                mNameTextView.setText(mMix.getIngred1() + ", " + mMix.getIngred2());
+            } else if (mMix.getIngred4() == null) {
+                mNameTextView.setText(mMix.getIngred1() + ", " + mMix.getIngred2() + ", " + mMix.getIngred3());
+            } else {
+                mNameTextView.setText(mMix.getIngred1() + ", " + mMix.getIngred2() + ", " + mMix.getIngred3() + ", " + mMix.getIngred4());
+            }
+        }
+
+    }
+
+    private class MixWithTabakAdapter extends RecyclerView.Adapter<MixWithTabakHolder>{
+
+        @Override
+        public MixWithTabakHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater inflater = LayoutInflater.from(getActivity());
+            View view = inflater.inflate(R.layout.list_tabak_fragment_item,parent,false);
+            return new MixWithTabakHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(MixWithTabakHolder holder, int position) {
+            Mix mix = mMixes.get(position);
+            mMix = mix;
+            holder.bindViews();
+            holder.mFamilyTextView.setText(mix.getFamily());
+            holder.mRatingTextView.setText(mix.getRating());
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
+        }
+    }
+
+    private class AsynkTas extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected Void doInBackground(Void... params) {
+            mTabakLab = TabakLab.get(getActivity());
+            mMixes = mTabakLab.getMixesWithTabak(tabakName);
+            return null;
+        }
     }
 }
 

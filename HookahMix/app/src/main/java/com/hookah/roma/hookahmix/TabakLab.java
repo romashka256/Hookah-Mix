@@ -154,6 +154,19 @@ public class TabakLab {
         return new TabakCursorWrapper(cursor);
     }
 
+    private TabakCursorWrapper queryTabaksfromMixes(String name) {
+        String[] group = new String[]{MixTable.Cols.INGRED1,MixTable.Cols.INGRED2,MixTable.Cols.INGRED3,MixTable.Cols.INGRED4};
+
+        Cursor cursor = mDataBase.query(
+                MixTable.NAME,
+                null,
+                MixTable.Cols.INGRED1 + " = ? OR " + MixTable.Cols.INGRED2 + " = ? OR " + MixTable.Cols.INGRED3 + " = ? OR " + MixTable.Cols.INGRED4 + " = ?" ,
+                new String[]{name,name,name,name},
+                null,
+                null,
+                null);
+        return new TabakCursorWrapper(cursor);
+    }
 
     // Return entire list of crimes
     public List<Tabak> getTabaks() {
@@ -214,7 +227,7 @@ public class TabakLab {
     public ArrayList<Mix> getMixesWithTabak(String name) {
         ArrayList<Mix> mixes = new ArrayList<>();
         int i = 0;
-        TabakCursorWrapper cursor = queryTabaks(MixTable.Cols.DESCRIPTION + " = ?", new String[]{name});
+        TabakCursorWrapper cursor = queryTabaksfromMixes(name);
         try {
             if (i == 0) {
                 cursor.moveToFirst();
