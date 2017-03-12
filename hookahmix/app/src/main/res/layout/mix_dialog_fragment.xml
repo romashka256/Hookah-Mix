@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/mix_name_dialog"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textSize="18sp"
+        android:text="Грейпфрут, Апельсин, Ананас"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/mix_description_dialog"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="31dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/mix_name_dialog"
+        android:lineSpacingMultiplier="1.2"
+        android:text="Задача организации, в особенности же постоянный количественный рост и сфера нашей"
+        android:textColor="@color/family"
+        android:textSize="12sp" />
+
+    <RatingBar
+        android:id="@+id/mix_dialog_ratingBar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="31dp"
+        android:layout_below="@id/mix_description_dialog"
+        android:layout_marginTop="10dp"
+        android:numStars="5" />
+    <TextView
+        android:id="@+id/mix_dialog_ratingInt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="125dp"
+        android:textSize="17sp"
+        android:layout_below="@id/mix_description_dialog"
+        android:layout_marginTop="7.5dp"
+        android:text="4.1"
+        android:textColor="@color/ratingBar" />
+
+    <LinearLayout
+        android:id="@+id/layout_ingred1"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_below="@id/mix_dialog_ratingBar"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/separator_mix_details1"
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/ratingBar"></View>
+
+        <TextView
+            android:id="@+id/ingred1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Грейпфрут"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/proc1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="10%"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_ingred2"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_ingred1"
+        android:layout_marginLeft="45dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/separator_mix_details2"
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/ratingBar"></View>
+
+        <TextView
+            android:id="@+id/ingred2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Грейпфрут"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/proc2"
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:gravity="right"
+            android:text="10%"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_ingred3"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_ingred2"
+        android:layout_marginLeft="45dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/separator_mix_details3"
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10.5dp"
+            android:background="@color/ratingBar"></View>
+
+        <TextView
+            android:id="@+id/ingred3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Грейпфрут"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/proc3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="10%"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_ingred4"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_ingred3"
+        android:layout_marginLeft="45dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/separator_mix_details4"
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/ratingBar"></View>
+
+        <TextView
+            android:id="@+id/ingred4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_ingred3"
+            android:layout_marginLeft="10dp"
+            android:text="Грейпфрут"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/proc4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingred1"
+            android:gravity="right"
+            android:text="10%"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</RelativeLayout>
