@@ -5,11 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/abs_layout" />
+
     <View
-        android:layout_below="@id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:translationZ="10dp"
@@ -19,9 +16,8 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_below="@id/tool_bar"
         android:background="@color/colorAccent"
-        android:scaleType="fitStart"
+        android:scaleType="fitXY"
         android:adjustViewBounds="true"/>
     <View
         android:layout_below="@id/imageView"
@@ -31,7 +27,7 @@
 
     <TextView
         android:id="@+id/tabak_name"
-        android:layout_width="250dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView"
         android:layout_marginLeft="24dp"
@@ -82,7 +78,7 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:background="@drawable/buttonshape"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="165dp"
         android:drawableLeft="@drawable/ic_favorite_black_24dp"
         android:padding="15dp"
         android:paddingBottom="30dp"
@@ -104,12 +100,10 @@
         android:layout_alignStart="@+id/linearlayout" />
     <TextView
         android:layout_width="match_parent"
-        android:layout_below="@id/tabak_description"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="405dp"
         android:layout_height="35dp"
         android:background="#445892"
         android:textColor="#FFF"
-        android:layout_alignParentEnd="true"
         android:text="МИКСЫ С ГРЕЙПФРУТОМ"
         android:gravity="center_vertical"
         android:id="@+id/mixWithTextView"
@@ -117,17 +111,22 @@
     <ImageView
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/tabak_description"
+        android:layout_marginTop="410.5dp"
         android:layout_alignEnd="@id/mixWithTextView"
-        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
         android:src="@mipmap/ic_right_arrow"
         android:adjustViewBounds="true"/>
-
+<View
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_below="@id/mixWithTextView"
+    android:background="#556cb0"></View>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_view_fragment_tabak"
         android:background="#556cb0"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="27dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/mixWithTextView" />

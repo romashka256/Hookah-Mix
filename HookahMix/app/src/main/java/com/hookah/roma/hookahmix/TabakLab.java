@@ -154,20 +154,6 @@ public class TabakLab {
         return new TabakCursorWrapper(cursor);
     }
 
-    private TabakCursorWrapper queryTabaksfromMixes(String name) {
-        String[] group = new String[]{MixTable.Cols.INGRED1,MixTable.Cols.INGRED2,MixTable.Cols.INGRED3,MixTable.Cols.INGRED4};
-
-        Cursor cursor = mDataBase.query(
-                MixTable.NAME,
-                null,
-                MixTable.Cols.INGRED1 + " = ? OR " + MixTable.Cols.INGRED2 + " = ? OR " + MixTable.Cols.INGRED3 + " = ? OR " + MixTable.Cols.INGRED4 + " = ?" ,
-                new String[]{name,name,name,name},
-                null,
-                null,
-                null);
-        return new TabakCursorWrapper(cursor);
-    }
-
     // Return entire list of crimes
     public List<Tabak> getTabaks() {
         List<Tabak> crimes = new ArrayList<>();
@@ -192,7 +178,7 @@ public class TabakLab {
         TabakCursorWrapper cursor = queryMixes(null, null);
         try {
             cursor.moveToFirst();
-            for (int i = 0; i < 13; i++) {
+            for (int i = 0; i < 6; i++) {
                 mixes.add(cursor.getMix());
                 cursor.moveToNext();
             }
@@ -215,7 +201,7 @@ public class TabakLab {
 
 
     public Mix getMix(String description) {
-        TabakCursorWrapper cursor = queryTabaks(MixTable.Cols.DESCRIPTION + " = ?", new String[]{description});
+        TabakCursorWrapper cursor = queryMixes(MixTable.Cols.DESCRIPTION + " = ?", new String[]{description});
         try {
             cursor.moveToFirst();
             return cursor.getMix();
@@ -224,7 +210,7 @@ public class TabakLab {
         }
     }
 
-    public ArrayList<Mix> getMixesWithTabak(String name) {
+   /* public ArrayList<Mix> getMixesWithTabak(String name) {
         ArrayList<Mix> mixes = new ArrayList<>();
         int i = 0;
         TabakCursorWrapper cursor = queryTabaksfromMixes(name);
@@ -232,7 +218,7 @@ public class TabakLab {
             if (i == 0) {
                 cursor.moveToFirst();
             }
-            while(cursor.isAfterLast()) {
+            while (cursor.isAfterLast()) {
                 cursor.moveToNext();
                 mixes.add(i++, cursor.getMix());
             }
@@ -241,13 +227,13 @@ public class TabakLab {
         }
         return mixes;
     }
+    */
 
 
-
-    public void updateTabak(TabaksArrayList tabak){
+    public void updateTabak(TabaksArrayList tabak) {
         String name = tabak.getName();
         ContentValues values = getContentValues(tabak);
-        mDataBase.update(TabakTable.NAME,values,TabakTable.Cols.NAME + " = ?",new String[]{ name });
+        mDataBase.update(TabakTable.NAME, values, TabakTable.Cols.NAME + " = ?", new String[]{name});
 
     }
 }

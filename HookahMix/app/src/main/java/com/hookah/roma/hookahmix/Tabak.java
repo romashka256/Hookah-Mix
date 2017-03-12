@@ -29,6 +29,7 @@ public class Tabak  {
         this.description = description;
     }
     public void setIsfavourite(String isfavourite) {this.isfavourite = isfavourite;}
+    public void setSecond_name(String second_name){this.second_name = second_name;}
     public String getName() {
         return name;
     }
@@ -43,6 +44,7 @@ public class Tabak  {
     public String getId() { return id; }
     public String getPhotoFilename() {return getId();}
     public String getSecond_name(){return second_name; }
+
 
 
     @SerializedName("tabaksArrayList")

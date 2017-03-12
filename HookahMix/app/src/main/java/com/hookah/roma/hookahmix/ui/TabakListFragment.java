@@ -161,7 +161,7 @@ public class TabakListFragment extends Fragment {
         public void onBindViewHolder(TabakHolder holder, int position) {
             Tabak tabak = mTabaks.get(position);
             mTabak = tabak;
-            int resId = context.getResources().getIdentifier("ananas","drawable",context.getPackageName());
+            int resId = context.getResources().getIdentifier(mTabak.getSecond_name(),"drawable",context.getPackageName());
             holder.mNameTextView.setText(tabak.getName());
             holder.mFamilyTextView.setText(tabak.getFamily());
             holder.mRatingTextView.setText(tabak.getRating());

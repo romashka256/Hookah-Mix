@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.Tabak;
@@ -19,11 +20,25 @@ import java.util.List;
 public class TabakPagerActivity extends AppCompatActivity {
     private static final String EXTRA_TABAK_NAME = "com.hookah.roma.hookahmix.name";
     private List<Tabak> mTabaks;
+    private Toolbar mToolBar;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabak_pager);
+
+        mToolBar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(mToolBar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
 
         ViewPager mViewPager = (ViewPager) findViewById(R.id.activity__tabak_pager_view_pager);
 

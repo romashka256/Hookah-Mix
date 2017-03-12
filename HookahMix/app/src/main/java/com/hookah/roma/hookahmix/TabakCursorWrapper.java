@@ -20,6 +20,7 @@ public class TabakCursorWrapper extends CursorWrapper {
     public  Tabak getTabak(){
         String name = getString(getColumnIndex(TabakTable.Cols.NAME));
         String description = getString(getColumnIndex(TabakTable.Cols.DESCRIPTION));
+        String secondname = getString(getColumnIndex(TabakTable.Cols.SECOND_NAME));
         String family = getString(getColumnIndex(TabakTable.Cols.FAMILY));
         String rating = getString(getColumnIndex(TabakTable.Cols.RATING));
         String favourite = getString(getColumnIndex(TabakTable.Cols.FAVOURITE));
@@ -31,6 +32,7 @@ public class TabakCursorWrapper extends CursorWrapper {
         tabak.setFamily(family);
         tabak.setRating(rating);
         tabak.setIsfavourite(favourite);
+        tabak.setSecond_name(secondname);
 
         return tabak;
     }

@@ -2,93 +2,107 @@
   "tabaksArrayList":[
     {
       "name":"Абрикос",
-      "description":"Со вкусом Абрикоса",
+      "second_name":"abrikos",
+      "description":"Аромат Абрикос обладает неповторимым тяжелым сладким дымом, способным доставить удовольствие самому взыскательному курильщику.",
       "rating":"4.1",
       "favourite":"1",
       "family":"Al fakher"
     },
     {
       "name":"Ананас",
-      "description":"Со вкусом Ананаса",
+      "second_name":"ananas",
+      "description":"Экзотический аромат этого табака составлен из ноток свежих фруктов с выраженным ананасовым вкусом. Сладкий вкус сочетается с насыщенным белым дымом.",
       "rating":"4.1",
-      "favourite":"0",
-      "family":"Al fakher"
-    },
-    {
-      "name":"Апельсин",
-      "description":"Со вкусом Апельсина",
-      "rating":"4.1",
-      "favourite":"0",
-      "family":"Al fakher"
-    },
-    {
-      "name":"Апельсин с мятой",
-      "description":"Со вкусом Апельсина с мятой",
-      "rating":"4.1",
-      "favourite":"0",
-      "family":"Al fakher"
-    },
-    {
-      "name":"Арбуз",
-      "description":"Со вкусом Арбуза",
-      "rating":"4.1",
-      "favourite":"0",
-      "family":"Al fakher"
-    },
-    {
-      "name":"Арбуз с мятой",
-      "description":"со вкусом Арбуза с мятой",
-      "rating":"4.0",
       "favourite":"1",
       "family":"Al fakher"
     },
     {
-      "name":"Банан",
-      "description":"со вкусом Банана",
+      "name":"Апельсин",
+      "second_name":"apelsin",
+      "description":"Ароматизированный табак для кальяна Аль Фахер со ярковыраженным послевкусием апельсина.",
       "rating":"4.1",
-      "favourite":"0",
+      "favourite":"1",
+      "family":"Al fakher"
+    },
+    {
+      "name":"Апельсин с мятой",
+      "second_name":"apelsinsmyatoy",
+      "description":"Свежий и ароматный вкус цитруса отлично сочетается с привкусом дыма, создавая гармонию и некую прохладу после курения.",
+      "rating":"4.1",
+      "favourite":"1",
+      "family":"Al fakher"
+    },
+    {
+      "name":"Арбуз",
+      "second_name":"arbyz",
+      "description":"Знаменитый табак для кальяна  с ярко выраженным и удивительным вкусом арбуза.",
+      "rating":"4.1",
+      "favourite":"1",
+      "family":"Al fakher"
+    },
+    {
+      "name":"Арбуз с мятой",
+      "second_name":"arbyzsmyatoy",
+      "description":"Основная композиция ароматов в этой смеси - натуральный вкус арбуза и свежесть мяты – дуэт сладости, свежести и терпкости с ярким, насыщенным фруктовым оттенком",
+      "rating":"4.1",
+      "favourite":"1",
+      "family":"Al fakher" ,
+      "asd":"Al fakasdllher"
+    },
+    {
+      "name":"Банан",
+      "second_name": "banan",
+      "description":"Необыкновенно ароматный и сладкий вкус, с хорошо выраженным послевкусием.",
+      "rating":"4.1",
+      "favourite":"1",
       "family":"Al fakher"
     },
     {
       "name":"Ваниль",
-      "description":"со вкусом Ванили",
+      "second_name":"vanil",
+      "description":"Этот табак пользуется большим спросом у опытных курильщиков, так как идеален для смешивания и получения нового неподражаемого аромата.",
       "rating":"4.1",
-      "favourite":"0",
+      "favourite":"1",
       "family":"Al fakher"
     },
     {
       "name":"Виноград",
-      "description":"со вкусом Винограда",
+      "second_name":"vinograd",
+      "description":"Свежий белый виноград и ароматизаторы со вкусом винограда высочайшего качества делают этот ароматизированный табак непревзойденным. ",
       "rating":"4.1",
-      "favourite":"0",
+      "favourite":"1",
       "family":"Al fakher"
     },
     {
       "name":"Виноград с мятой",
-      "description":"со вкусом Винограда с мятой",
+      "second_name":"vinogradsmyatoy",
+      "description":"Мягко-сладкий виноградный дым оставляет устойчивое послевкусие свежей перечной мяты. ",
       "rating":"4.1",
-      "favourite":"0",
+      "favourite":"1",
       "family":"Al fakher"
     },
     {
       "name":"Виноград с ягодами",
-      "description":"со вкусом Винограда с ягодами",
+      "second_name":"vinogradsyagodami",
+      "description":"При курении, отчетливо чувствуется вкус винограда с небольшим дополнением вкусом какой-то сладенькой и ароматной ягодки",
       "rating":"4.1",
-      "favourite":"0",
+      "favourite":"1",
       "family":"Al fakher"
     },
     {
       "name":"Вишня",
-      "description":"со вкусом Вишни",
+      "second_name":"vishnya",
+      "description":"Хорошо сочетается с мягкими фруктовыми вкусами, колой. Для усиления рекомендуется курить кальян на колбе с соком.",
       "rating":"4.1",
-      "favourite":"0",
+      "favourite":"1",
       "family":"Al fakher"
     },
     {
       "name":"Вишня с мятой",
+      "second_name":"vishnyasmyatoy",
       "description":"со вкусом Вишни с мятой",
       "rating":"4.1",
-      "favourite":"0",
+      "favourite":"1",
       "family":"Al fakher"
     }
   ]

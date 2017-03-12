@@ -1,7 +1,10 @@
 package com.hookah.roma.hookahmix.ui;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -117,6 +120,8 @@ public class MixListFragment extends Fragment {
             mFamilyTextView = (TextView) itemView.findViewById(R.id.mix_family_item);
             mRatingIntTextView = (TextView) itemView.findViewById(R.id.mix_ratingbar_int_item);
             mRatingBar = (RatingBar) itemView.findViewById(R.id.mix_ratingbar_item);
+            Drawable drawable = mRatingBar.getProgressDrawable();
+            drawable.setColorFilter(Color.parseColor("#00c7af"), PorterDuff.Mode.SRC_ATOP);
             mButton = (ImageView) itemView.findViewById(R.id.mix_button_item);
             mSeparator = itemView.findViewById(R.id.separator_mix_list);
             mDetails = itemView.findViewById(R.id.include_details_mix);
