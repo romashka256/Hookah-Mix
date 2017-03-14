@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="51dp"
         android:numStars="1"/>
 
     <TextView
@@ -52,8 +52,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/rating_int_item"
         android:layout_toRightOf="@id/ratingbar_item"
-        android:layout_marginTop="53dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginLeft="6dp"
         android:textColor="@color/ratingBar"
         android:textSize="13sp"
         android:text="4.1"/>

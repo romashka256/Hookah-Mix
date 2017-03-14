@@ -67,7 +67,7 @@ public class MixDialogFragment extends DialogFragment {
         ratingBarInt.setTypeface(notoSansBoldFont);
 
         Mix mMix = TabakLab.get(getActivity()).getMix(desc);
-        ratingBar.setProgress((int)Float.parseFloat(mMix.getRating()));
+        ratingBar.setProgress((int)Float.parseFloat(mMix.getRating()) * 2);
 
             if (mMix.getIngred3() == null) {
                 name.setText(mMix.getIngred1() + ", " + mMix.getIngred2());

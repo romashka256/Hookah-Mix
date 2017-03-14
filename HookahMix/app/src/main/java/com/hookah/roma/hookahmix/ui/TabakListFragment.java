@@ -61,8 +61,6 @@ public class TabakListFragment extends Fragment {
         TextView mTitle = (TextView) view.findViewById(R.id.textViewofToolBar);
         mTitle.setText("Страница табаков");
 
-
-
         LinearLayoutManager lm = new LinearLayoutManager(getActivity());
         mTabakRecyclerView.setLayoutManager(lm);
 
@@ -78,6 +76,7 @@ public class TabakListFragment extends Fragment {
         if (mAdapter == null) {
             mAdapter = new TabakAdapter(getActivity(),tabakList);
             mTabakRecyclerView.setAdapter(mAdapter);
+
         } else {
             mAdapter.setTabaks(tabakList);
         }
@@ -99,7 +98,7 @@ public class TabakListFragment extends Fragment {
             mFamilyTextView = (TextView) itemView.findViewById(R.id.family_textview_item);
             mRatingTextView = (TextView) itemView.findViewById(R.id.rating_int_item);
             mImageViewItem = (ImageView) itemView.findViewById(R.id.picture_imageview_item);
-            mImageViewItem.setColorFilter(R.color.colorPrimaryea, PorterDuff.Mode.DARKEN);
+            mImageViewItem.setColorFilter(R.color.colorPrimaryea, PorterDuff.Mode.SRC_ATOP);
             mCheckBox = (CheckBox) itemView.findViewById(R.id.checkBox);
             mItem = (RelativeLayout) itemView.findViewById(R.id.list_item);
 
@@ -116,11 +115,12 @@ public class TabakListFragment extends Fragment {
             mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    Tabak tabak = mTabaks.get(getAdapterPosition());
                     if (isChecked) {
-                        mTabak.setIsfavourite("1");
+                        tabak.setIsfavourite("1");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
                     }else{
-                        mTabak.setIsfavourite("0");
+                        tabak.setIsfavourite("0");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                     }
                 }
@@ -128,6 +128,10 @@ public class TabakListFragment extends Fragment {
         }
         @Override
         public void onClick(View v) {
+           bindngCheckBoxes(v);
+        }
+
+        public void bindngCheckBoxes(View v){
             Tabak tabak = TabakLab.get(getActivity()).getTabak(mTabak.getName());
             mCheckBox.setChecked(!mCheckBox.isChecked());
             if (mCheckBox.isChecked()) {
@@ -170,14 +174,13 @@ public class TabakListFragment extends Fragment {
             if(resId != 0) {
                 Picasso.with(context).load(resId).resizeDimen(R.dimen.image_size_item, R.dimen.image_size_item).centerCrop().into(holder.mImageViewItem);
             }
-                if (tabak.isfavourite() == "1") {
+                if (tabak.isfavourite().equals("1")) {
                 holder.mCheckBox.setChecked(true);
                 holder.mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
             } else {
                 holder.mCheckBox.setChecked(false);
                 holder.mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             }
-
         }
 
         public void setTabaks(List<Tabak> tabaks) {

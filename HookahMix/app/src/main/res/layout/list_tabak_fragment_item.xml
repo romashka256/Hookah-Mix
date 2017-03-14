@@ -11,9 +11,15 @@
 
     <TextView
         android:id="@+id/name_textview_item_tabak_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="18dp"
         android:layout_marginLeft="18dp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="1"
+        android:scrollHorizontally="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_marginTop="15dp"
         android:text="Грейпфрут, Ананас"
         android:textColor="@color/white"/>

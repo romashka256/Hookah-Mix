@@ -44,7 +44,7 @@
         android:layout_marginLeft="125dp"
         android:textSize="17sp"
         android:layout_below="@id/mix_description_dialog"
-        android:layout_marginTop="7.5dp"
+        android:layout_marginTop="5.5dp"
         android:text="4.1"
         android:textColor="@color/ratingBar" />
 
