@@ -1,4 +1,4 @@
-package com.hookah.roma.hookahmix.ui;
+package com.hookah.roma.hookahmix.ui.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
