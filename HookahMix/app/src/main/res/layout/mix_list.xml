@@ -5,11 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/tool_bar_list"
-        layout="@layout/abs_layout">
-
-    </include>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

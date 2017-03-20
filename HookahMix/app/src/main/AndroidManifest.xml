@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hookah.roma.hookahmix">
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -8,19 +9,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name=".ui.TabakListActivity">
-    <intent-filter>
-        <action android:name="android.intent.action.MAIN"></action>
-        <category android:name="android.intent.category.LAUNCHER"></category>
-    </intent-filter>
-</activity>
-        <activity android:name="com.hookah.roma.hookahmix.ui.TabakPagerActivity"
-            android:parentActivityName="com.hookah.roma.hookahmix.ui.TabakListActivity">
-        </activity>
 
-        <activity android:name="com.hookah.roma.hookahmix.ui.MixActivity">
+        <activity android:name="com.hookah.roma.hookahmix.ui.activites.MixActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hookah.roma.hookahmix.ui.activites.TabakListActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hookah.roma.hookahmix.ui.activites.MixListActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hookah.roma.hookahmix.ui.activites.TabakPagerActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hookah.roma.hookahmix.ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"></action>
+                <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
         </activity>
 

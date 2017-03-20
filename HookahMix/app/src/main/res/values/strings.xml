@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">HookahMix</string>
+
+    <string-array name="titles">
+        <item>Мои табаки</item>
+        <item>Мои миксы</item>
+        <item>Табаки</item>
+        <item>миксы</item>
+    </string-array>
 </resources>
