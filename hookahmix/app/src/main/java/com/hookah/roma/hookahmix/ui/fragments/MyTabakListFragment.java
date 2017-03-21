@@ -59,6 +59,7 @@ public class MyTabakListFragment extends Fragment {
     public void onResume() {
         super.onResume();
         updateUI();
+        mAdapter.notifyDataSetChanged();
     }
 
     private void updateUI() {
@@ -97,6 +98,8 @@ public class MyTabakListFragment extends Fragment {
                     startActivity(intent);
                 }
             });
+
+
 
             mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -149,6 +152,7 @@ public class MyTabakListFragment extends Fragment {
                 Picasso.with(context).load(R.drawable.al_fakher).resizeDimen(R.dimen.image_size_item, R.dimen.image_size_item).centerCrop().into(holder.mImageViewItem);
             }
         }
+
 
         @Override
         public int getItemCount() {

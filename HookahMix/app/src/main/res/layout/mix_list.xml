@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -24,7 +25,7 @@
         android:id="@+id/lst_mixes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff" />
+        android:background="@color/colorPrimary" />
     </RelativeLayout>
 
 </LinearLayout>

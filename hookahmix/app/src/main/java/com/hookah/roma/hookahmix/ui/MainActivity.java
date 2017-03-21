@@ -4,7 +4,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -19,7 +19,6 @@ import com.hookah.roma.hookahmix.ui.fragments.TabakListFragment;
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
-
     private NavigationTabStrip mNavigationTabStrip;
 
     @Override
@@ -39,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
         mNavigationTabStrip.setTypeface(notoSansBoldFont);
         mNavigationTabStrip.setTitleSize(17);
 
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
+        mViewPager.setOffscreenPageLimit(4);
+
+        mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+
+
             @Override
             public Fragment getItem(int position) {
                 switch (position) {

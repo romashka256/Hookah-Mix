@@ -61,7 +61,7 @@ public class TabakListFragment extends Fragment {
 
         mTabaks = TabakLab.get(getActivity()).getTabaks();
 
-        mMyTabaks = new ArrayList<>(100);
+        mMyTabaks = new ArrayList<>();
         //Toolbar toolbar = (Toolbar) view.findViewById(R.id.tool_bar_list);
 
         //(((MainActivity) getActivity()).setSupportActionBar(toolbar);
@@ -145,12 +145,12 @@ public class TabakListFragment extends Fragment {
         }
 
         public void bindngCheckBoxes(View v) {
-            Tabak tabak = TabakLab.get(getActivity()).getTabak(mTabak.getName());
-            mCheckBox.setChecked(!mCheckBox.isChecked());
+            Tabak tabak = mTabaks.get(getAdapterPosition());
+                    mCheckBox.setChecked(!mCheckBox.isChecked());
             if (mCheckBox.isChecked()) {
                 tabak.setIsfavourite("1");
                 v.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
-                mMyTabaks.add(getAdapterPosition(),mTabak);
+                mMyTabaks.add(getAdapterPosition(),tabak);
             } else {
                 v.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 tabak.setIsfavourite("0");

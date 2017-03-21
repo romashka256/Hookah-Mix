@@ -9,4 +9,5 @@
     <color name="description">#a9ffffff</color>
     <color name="family">#41ffffff</color>
     <color name="white">#FFF</color>
+    <color name="transparentBlack">#96000000</color>
 </resources>

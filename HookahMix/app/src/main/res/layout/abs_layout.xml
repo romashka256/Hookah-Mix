@@ -13,6 +13,7 @@
         android:id="@+id/textViewofToolBar"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+
         android:textColor="#526dbe"
         android:hint="Страница табака" />
 </android.support.v7.widget.Toolbar>

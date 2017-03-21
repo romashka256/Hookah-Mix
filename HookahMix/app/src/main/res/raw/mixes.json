@@ -63,6 +63,16 @@
       "rating":"4.2",
       "family":"Al fakher",
       "favourite":"1"
+    },
+    {
+      "ingred1": "Арбуз",
+      "ingred2": "Вишня",
+      "description" : "Довольно свежий микс арбуза с легким привкусом вишни.",
+      "proc1": "60",
+      "proc2":"40",
+      "rating":"4.2",
+      "family":"Al fakher",
+      "favourite":"1"
     }
   ]
 }
