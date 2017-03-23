@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.hookah.roma.hookahmix.NavigationTabStrip;
@@ -16,11 +19,23 @@ import com.hookah.roma.hookahmix.ui.fragments.MyTabakListFragment;
 import com.hookah.roma.hookahmix.ui.fragments.TabakListFragment;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private ViewPager mViewPager;
     private NavigationTabStrip mNavigationTabStrip;
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.tabak_items,menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_item_update) {
+       //     MyTabakListFragment.newInstance().updateRecyclerView();
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
         mNavigationTabStrip = (NavigationTabStrip) findViewById(R.id.nts_center);
         mNavigationTabStrip.setTypeface(notoSansBoldFont);
         mNavigationTabStrip.setTitleSize(17);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar_main);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(" ");
         mViewPager.setOffscreenPageLimit(4);
 
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {

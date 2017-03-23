@@ -69,7 +69,6 @@ public class TabakFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
 
         mTabakLab = TabakLab.get(getActivity());
         tabakName = (String) getArguments().get(EXTRA_TABAK_NAME);
@@ -89,7 +88,7 @@ public class TabakFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_item_favourite:
+            case R.id.menu_item_update:
                 mTabak.setIsfavourite("1");
                 return true;
             default:

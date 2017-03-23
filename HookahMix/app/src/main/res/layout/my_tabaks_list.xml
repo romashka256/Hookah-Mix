@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -12,21 +14,43 @@
     </FrameLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="@drawable/toolbar_dropshadow"
         android:translationZ="10dp"/>
 
+        <Button
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/buttonshape"
+            android:drawableLeft="@mipmap/ic_update"
+            android:padding="3dp"
+            android:translationZ="30dp"
+            android:id="@+id/update_button"
+            android:layout_marginTop="435dp"
+            android:layout_marginLeft="275dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:id="@+id/recyclerview_is_empty_textview"
+            android:layout_centerInParent="true"
+            android:text="Вы не добавили ни одного табака" />
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/lst_tabaks"
+        android:id="@+id/my_lst_tabaks"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary" />
-        android:background="@color/colorPrimary" />
-        android:background="@color/colorPrimary" />
+
     </RelativeLayout>
+
+
 
 
 </LinearLayout>

@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -42,16 +39,6 @@ public class TabakListFragment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.tabak_items, menu);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -82,6 +69,7 @@ public class TabakListFragment extends Fragment {
 
 
     private void updateUI() {
+
         TabakLab tabakLab = TabakLab.get(getActivity());
         List<Tabak> tabakList = tabakLab.getTabaks();
         if (mAdapter == null) {
@@ -130,10 +118,12 @@ public class TabakListFragment extends Fragment {
                     if (isChecked) {
                         tabak.setIsfavourite("1");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
-
+                        mMyTabaks.add(mMyTabaks.size(), tabak);
                     } else {
                         tabak.setIsfavourite("0");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                        if(!(mMyTabaks.size() == 0))
+                        mMyTabaks.remove(mMyTabaks.size() -1);
                     }
                 }
             });
@@ -146,15 +136,13 @@ public class TabakListFragment extends Fragment {
 
         public void bindngCheckBoxes(View v) {
             Tabak tabak = mTabaks.get(getAdapterPosition());
-                    mCheckBox.setChecked(!mCheckBox.isChecked());
+            mCheckBox.setChecked(!mCheckBox.isChecked());
             if (mCheckBox.isChecked()) {
                 tabak.setIsfavourite("1");
                 v.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
-                mMyTabaks.add(getAdapterPosition(),tabak);
             } else {
                 v.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 tabak.setIsfavourite("0");
-                mMyTabaks.remove(getAdapterPosition());
 
             }
         }

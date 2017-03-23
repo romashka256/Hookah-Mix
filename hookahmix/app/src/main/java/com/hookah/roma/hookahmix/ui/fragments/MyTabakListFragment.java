@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -23,17 +24,17 @@ import com.hookah.roma.hookahmix.Tabak;
 import com.hookah.roma.hookahmix.ui.activites.TabakPagerActivity;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by Roma on 16.03.2017.
- */
 
 public class MyTabakListFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
+    private TextView mEmptyView;
+    private Button mUpdateButton;
     private Tabak mTabak;
-    private TabakAdapter mAdapter;
+    private List<Tabak> mTabaks;
+    public TabakAdapter mAdapter;
 
     public static MyTabakListFragment newInstance() {
         MyTabakListFragment fragemnt = new MyTabakListFragment();
@@ -43,14 +44,25 @@ public class MyTabakListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tabaks_list, container, false);
+        View v = inflater.inflate(R.layout.my_tabaks_list, container, false);
 
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.lst_tabaks);
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.my_lst_tabaks);
+        mEmptyView = (TextView) v.findViewById(R.id.recyclerview_is_empty_textview);
+        mUpdateButton = (Button) v.findViewById(R.id.update_button);
+        mUpdateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateUI();
+            }
+        });
+
+        mTabaks = new ArrayList<>();
 
         LinearLayoutManager lm = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(lm);
 
         updateUI();
+
         return v;
     }
 
@@ -61,14 +73,23 @@ public class MyTabakListFragment extends Fragment {
         updateUI();
         mAdapter.notifyDataSetChanged();
     }
-
-    private void updateUI() {
+    public void updateUI() {
         List<Tabak> tabaks = TabakListFragment.mMyTabaks;
+        mTabaks = tabaks;
         if (mAdapter == null) {
-            mAdapter = new TabakAdapter(getActivity(),tabaks);
+            mAdapter = new TabakAdapter(getActivity(), tabaks);
             mRecyclerView.setAdapter(mAdapter);
-        }else{
+        } else {
             mAdapter.notifyDataSetChanged();
+        }
+        Typeface notoSansBoldFont = Typeface.createFromAsset(getResources().getAssets(), "fonts/NotoSans-Bold.ttf");
+        mEmptyView.setTypeface(notoSansBoldFont);
+        if (mTabaks.isEmpty()) {
+            mRecyclerView.setVisibility(View.GONE);
+            mEmptyView.setVisibility(View.VISIBLE);
+        } else {
+            mRecyclerView.setVisibility(View.VISIBLE);
+            mEmptyView.setVisibility(View.GONE);
         }
     }
 
@@ -89,6 +110,7 @@ public class MyTabakListFragment extends Fragment {
             mImageViewItem.setColorFilter(R.color.colorPrimaryea, PorterDuff.Mode.SRC_ATOP);
             mCheckBox = (CheckBox) itemView.findViewById(R.id.checkBox);
             mItem = (RelativeLayout) itemView.findViewById(R.id.list_item);
+            mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
             mImageViewItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -98,8 +120,6 @@ public class MyTabakListFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-
-
 
             mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -111,6 +131,8 @@ public class MyTabakListFragment extends Fragment {
                     } else {
                         tabak.setIsfavourite("0");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                        mTabaks.remove(getAdapterPosition());
+                        mAdapter.notifyDataSetChanged();
                     }
                 }
             });
@@ -123,7 +145,7 @@ public class MyTabakListFragment extends Fragment {
         private List<Tabak> mTabaks;
 
 
-        public TabakAdapter(Context context,List<Tabak> tabaks) {
+        public TabakAdapter(Context context, List<Tabak> tabaks) {
             this.context = context;
             mTabaks = tabaks;
 
@@ -143,6 +165,7 @@ public class MyTabakListFragment extends Fragment {
             int resId = context.getResources().getIdentifier(mTabak.getSecond_name(), "drawable", context.getPackageName());
             holder.mNameTextView.setText(tabak.getName());
             holder.mFamilyTextView.setText(tabak.getFamily());
+
             holder.mRatingIntTextView.setText(tabak.getRating());
             Typeface notoSansBoldFont = Typeface.createFromAsset(getResources().getAssets(), "fonts/NotoSans-Bold.ttf");
             holder.mRatingIntTextView.setTypeface(notoSansBoldFont);
