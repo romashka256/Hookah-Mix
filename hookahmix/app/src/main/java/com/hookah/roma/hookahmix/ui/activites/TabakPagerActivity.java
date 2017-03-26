@@ -10,9 +10,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.hookah.roma.hookahmix.JSONHelper;
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.Tabak;
-import com.hookah.roma.hookahmix.TabakLab;
 import com.hookah.roma.hookahmix.ui.fragments.TabakFragment;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class TabakPagerActivity extends AppCompatActivity {
 
         ViewPager mViewPager = (ViewPager) findViewById(R.id.activity__tabak_pager_view_pager);
 
-        mTabaks = TabakLab.get(this).getTabaks();
+        mTabaks = JSONHelper.importFromJSON(getApplicationContext());
         String name = (String) getIntent().getSerializableExtra(EXTRA_TABAK_NAME);
         FragmentManager fm = getSupportFragmentManager();
 

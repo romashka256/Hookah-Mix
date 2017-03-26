@@ -49,13 +49,13 @@ public class Tabak  {
 
     @SerializedName("tabaksArrayList")
     @Expose
-    private List<TabaksArrayList> tabaksArrayList = null;
+    private List<Tabak> tabaksArrayList = null;
 
-    public List<TabaksArrayList> getTabaksArrayList() {
+    public List<Tabak> getTabaksArrayList() {
         return tabaksArrayList;
     }
 
-    public void setTabaksArrayList(List<TabaksArrayList> tabaksArrayList) {
+    public void setTabaksArrayList(List<Tabak> tabaksArrayList) {
         this.tabaksArrayList = tabaksArrayList;
     }
 

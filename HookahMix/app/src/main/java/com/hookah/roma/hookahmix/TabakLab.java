@@ -19,7 +19,6 @@ import java.util.List;
 import database.TabakBaseHelper;
 
 import static database.TabakDbSchema.MixTable;
-import static database.TabakDbSchema.TabakTable;
 
 
 public class TabakLab {
@@ -31,7 +30,7 @@ public class TabakLab {
     private TabakLab(Context context) {
         mContext = context.getApplicationContext();
         mDataBase = new TabakBaseHelper(mContext).getWritableDatabase();
-        LoadTabaksFromJson();
+        // LoadTabaksFromJson();
         LoadMixFromJson();
     }
 
@@ -53,7 +52,7 @@ public class TabakLab {
     }
 
 
-    private static ContentValues getContentValues(TabaksArrayList tabak) {
+   /* private static ContentValues getContentValues(TabaksArrayList tabak) {
         ContentValues val = new ContentValues();
         val.put(TabakTable.Cols.NAME, tabak.getName());
         val.put(TabakTable.Cols.SECOND_NAME, tabak.getSecond_name());
@@ -62,7 +61,7 @@ public class TabakLab {
         val.put(TabakTable.Cols.RATING, tabak.getRating());
         val.put(TabakTable.Cols.FAVOURITE, tabak.getFavourite());
         return val;
-    }
+    } */
 
     private static ContentValues getContentValues(MixesArrayList mix) {
         ContentValues val = new ContentValues();
@@ -83,8 +82,7 @@ public class TabakLab {
 
     }
 
-
-    private void LoadTabaksFromJson() {
+  /*  private void LoadTabaksFromJson() {
         InputStream raw = mContext.getResources().openRawResource(R.raw.tabaks);
         Reader reader = new BufferedReader(new InputStreamReader(raw));
         Tabak listOfTabaks = new Gson().fromJson(reader, Tabak.class);
@@ -93,7 +91,7 @@ public class TabakLab {
         for (TabaksArrayList tabak : tabakList) {
             mDataBase.insert(TabakTable.NAME, null, getContentValues(tabak));
         }
-    }
+    } */
 
     private void LoadMixFromJson() {
         InputStream raw = mContext.getResources().openRawResource(R.raw.mixes);
@@ -129,7 +127,7 @@ public class TabakLab {
         return patterns*/
 
 
-    private TabakCursorWrapper queryTabaks(String whereClause, String[] whereArgs) {
+   /*  private TabakCursorWrapper queryTabaks(String whereClause, String[] whereArgs) {
         Cursor cursor = mDataBase.query(
                 TabakTable.NAME,
                 null,
@@ -139,7 +137,7 @@ public class TabakLab {
                 null,
                 null);
         return new TabakCursorWrapper(cursor);
-    }
+    } */
 
 
     private TabakCursorWrapper queryMixes(String whereClause, String[] whereArgs) {
@@ -155,7 +153,7 @@ public class TabakLab {
     }
 
     // Return entire list of crimes
-    public List<Tabak> getTabaks() {
+   /* public List<Tabak> getTabaks() {
         List<Tabak> crimes = new ArrayList<>();
 
         TabakCursorWrapper cursor = queryTabaks(null, null);
@@ -169,7 +167,24 @@ public class TabakLab {
             cursor.close();
         }
         return crimes;
-    }
+    } */
+
+
+   /* public List<Tabak> getTabaks() {
+        List<Tabak> crimes = new ArrayList<>();
+
+        TabakCursorWrapper cursor = queryTabaks(null, null);
+        try {
+            cursor.moveToFirst();
+            for (int i = 0; i < 13; i++) {
+                crimes.add(cursor.getTabak());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+        return crimes;
+    } */
 
 
     public List<Mix> getMixes() {
@@ -189,6 +204,7 @@ public class TabakLab {
     }
 
 
+    /*
     public Tabak getTabak(String name) {
         TabakCursorWrapper cursor = queryTabaks(TabakTable.Cols.NAME + " = ?", new String[]{name});
         try {
@@ -197,8 +213,18 @@ public class TabakLab {
         } finally {
             cursor.close();
         }
-    }
+    } */
 
+
+    public Tabak getTabak(String name,Context context) {
+        List<Tabak> tabaks = JSONHelper.importFromJSON(context);
+        for(Tabak tabak : tabaks){
+            if(tabak.getName().equals(name)) {
+                return tabak;
+            }
+        }
+        return null;
+    }
 
     public Mix getMix(String description) {
         TabakCursorWrapper cursor = queryMixes(MixTable.Cols.DESCRIPTION + " = ?", new String[]{description});
@@ -230,12 +256,12 @@ public class TabakLab {
     */
 
 
-    public void updateTabak(TabaksArrayList tabak) {
+  /*  public void updateTabak(TabaksArrayList tabak) {
         String name = tabak.getName();
         ContentValues values = getContentValues(tabak);
         mDataBase.update(TabakTable.NAME, values, TabakTable.Cols.NAME + " = ?", new String[]{name});
 
-    }
+    } */
 }
 
 

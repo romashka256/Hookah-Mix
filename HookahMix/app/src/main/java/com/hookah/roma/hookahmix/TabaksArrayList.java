@@ -25,7 +25,6 @@ public class TabaksArrayList {
     @Expose
     private String family;
 
-    private String Id;
 
     public String getName() {
         return name;
@@ -71,5 +70,4 @@ public class TabaksArrayList {
         this.family = family;
     }
 
-    public String getId() { return Id; }
 }

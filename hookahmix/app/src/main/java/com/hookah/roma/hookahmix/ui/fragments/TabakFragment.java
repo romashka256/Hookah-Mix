@@ -72,7 +72,7 @@ public class TabakFragment extends Fragment {
 
         mTabakLab = TabakLab.get(getActivity());
         tabakName = (String) getArguments().get(EXTRA_TABAK_NAME);
-        mTabak = TabakLab.get(getActivity()).getTabak(tabakName);
+        mTabak = TabakLab.get(getActivity()).getTabak(tabakName,getActivity());
         mMixes = mTabakLab.getMixes();
         AsynkTask task = new AsynkTask();
         task.execute();

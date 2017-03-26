@@ -129,7 +129,7 @@ public class MyTabakListFragment extends Fragment {
                         tabak.setIsfavourite("1");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
                     } else {
-                        tabak.setIsfavourite("0");
+                        tabak.setIsfavourite(null);
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                         mTabaks.remove(getAdapterPosition());
                         mAdapter.notifyDataSetChanged();

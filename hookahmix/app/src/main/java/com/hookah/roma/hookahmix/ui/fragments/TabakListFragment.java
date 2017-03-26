@@ -17,9 +17,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hookah.roma.hookahmix.JSONHelper;
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.Tabak;
-import com.hookah.roma.hookahmix.TabakLab;
 import com.hookah.roma.hookahmix.ui.activites.TabakPagerActivity;
 import com.squareup.picasso.Picasso;
 
@@ -46,7 +46,7 @@ public class TabakListFragment extends Fragment {
         mTabakRecyclerView = (RecyclerView) view.findViewById(R.id.lst_tabaks);
         setHasOptionsMenu(true);
 
-        mTabaks = TabakLab.get(getActivity()).getTabaks();
+        mTabaks = JSONHelper.importFromJSON(getActivity());
 
         mMyTabaks = new ArrayList<>();
         //Toolbar toolbar = (Toolbar) view.findViewById(R.id.tool_bar_list);
@@ -69,9 +69,7 @@ public class TabakListFragment extends Fragment {
 
 
     private void updateUI() {
-
-        TabakLab tabakLab = TabakLab.get(getActivity());
-        List<Tabak> tabakList = tabakLab.getTabaks();
+        List<Tabak> tabakList = JSONHelper.importFromJSON(getActivity());
         if (mAdapter == null) {
             mAdapter = new TabakAdapter(getActivity(), tabakList);
             mTabakRecyclerView.setAdapter(mAdapter);
@@ -81,6 +79,11 @@ public class TabakListFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        JSONHelper.exportToJSON(getActivity(),mTabaks);
+    }
 
     private class TabakHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView mNameTextView;
@@ -119,15 +122,22 @@ public class TabakListFragment extends Fragment {
                         tabak.setIsfavourite("1");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
                         mMyTabaks.add(mMyTabaks.size(), tabak);
+
                     } else {
-                        tabak.setIsfavourite("0");
+                        tabak.setIsfavourite(null);
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                        if(!(mMyTabaks.size() == 0))
-                        mMyTabaks.remove(mMyTabaks.size() -1);
+                        for(Tabak tabaker : mMyTabaks) {
+                            if (tabaker.getName().equals(tabak.getName())) {
+                                mMyTabaks.remove(tabaker);
+                            }
+                        }
                     }
+                    mAdapter.setTabaks(mTabaks);
                 }
             });
         }
+
+
 
         @Override
         public void onClick(View v) {
@@ -142,7 +152,7 @@ public class TabakListFragment extends Fragment {
                 v.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
             } else {
                 v.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                tabak.setIsfavourite("0");
+                tabak.setIsfavourite(null);
 
             }
         }
@@ -163,7 +173,6 @@ public class TabakListFragment extends Fragment {
             View view = inflater.inflate(R.layout.tabak_item, parent, false);
             return new TabakHolder(view);
         }
-
         @Override
         public void onBindViewHolder(TabakHolder holder, int position) {
             Tabak tabak = mTabaks.get(position);
@@ -179,7 +188,7 @@ public class TabakListFragment extends Fragment {
             } else {
                 Picasso.with(context).load(R.drawable.al_fakher).resizeDimen(R.dimen.image_size_item, R.dimen.image_size_item).centerCrop().into(holder.mImageViewItem);
             }
-            if (tabak.isfavourite().equals("1")) {
+            if (mTabak.isfavourite() != null) {
                 holder.mCheckBox.setChecked(true);
                 holder.mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
             } else {
@@ -187,6 +196,8 @@ public class TabakListFragment extends Fragment {
                 holder.mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             }
         }
+
+
 
         public void setTabaks(List<Tabak> tabaks) {
             mTabaks = tabaks;
