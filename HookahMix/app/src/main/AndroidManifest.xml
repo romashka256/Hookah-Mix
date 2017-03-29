@@ -37,7 +37,7 @@
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
-        <activity android:name="com.hookah.roma.hookahmix.ui.MainActivity">
+        <activity android:name="com.hookah.roma.hookahmix.ui.activites.KatalogsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"></action>
                 <category android:name="android.intent.category.DEFAULT"></category>

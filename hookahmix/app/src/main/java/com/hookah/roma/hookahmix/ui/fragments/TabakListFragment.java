@@ -51,10 +51,10 @@ public class TabakListFragment extends Fragment {
         mMyTabaks = new ArrayList<>();
         //Toolbar toolbar = (Toolbar) view.findViewById(R.id.tool_bar_list);
 
-        //(((MainActivity) getActivity()).setSupportActionBar(toolbar);
-        //(((MainActivity) getActivity()).getSupportActionBar().setTitle("");
-        //((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //((MainActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
+        //(((KatalogsFragment) getActivity()).setSupportActionBar(toolbar);
+        //(((KatalogsFragment) getActivity()).getSupportActionBar().setTitle("");
+        //((KatalogsFragment) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //((KatalogsFragment) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
 
         //TextView mTitle = (TextView) view.findViewById(R.id.textViewofToolBar);
         //mTitle.setText("Страница табаков");

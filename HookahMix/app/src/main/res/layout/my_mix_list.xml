@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cont_mix_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <View
+        android:layout_width="match_parent"
+        android:translationZ="10dp"
+        android:layout_height="5dp"
+        android:background="@drawable/toolbar_dropshadow" />
+        <Button
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/buttonshape"
+            android:drawableLeft="@mipmap/ic_update"
+            android:padding="3dp"
+            android:translationZ="30dp"
+            android:id="@+id/update_button"
+            android:layout_marginTop="435dp"
+            android:layout_marginLeft="275dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_lst_mixes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary" />
+    </RelativeLayout>
+
+</LinearLayout>

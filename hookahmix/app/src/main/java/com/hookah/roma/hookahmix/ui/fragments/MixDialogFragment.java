@@ -15,9 +15,7 @@ import com.hookah.roma.hookahmix.Mix;
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.TabakLab;
 
-/**
- * Created by Roma on 11.03.2017.
- */
+
 
 public class MixDialogFragment extends DialogFragment {
 
