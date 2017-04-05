@@ -6,6 +6,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,17 +16,18 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hookah.roma.hookahmix.HeightAnim;
 import com.hookah.roma.hookahmix.Mix;
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.Tabak;
 import com.hookah.roma.hookahmix.TabakLab;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +45,7 @@ public class MyMixesFragment extends Fragment {
     private Animation rotatingarrow;
     private TranslateAnimation animationDetails;
     private int countOfitemsDetails;
-    private Button mUpdateButton;
+    private FloatingActionButton mUpdateButton;
 
     private boolean[] isExpended;
 
@@ -61,10 +63,18 @@ public class MyMixesFragment extends Fragment {
         rotatingarrow = AnimationUtils.loadAnimation(getContext(), R.anim.rotatingimageview);
         rotatingarrow.setDuration(150);
 
-        mUpdateButton = (Button) view.findViewById(R.id.update_button);
+        mUpdateButton = (FloatingActionButton) view.findViewById(R.id.fab);
         mUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                StyleableToast st = new StyleableToast(getContext(), "Обновлено", Toast.LENGTH_SHORT);
+                st.setBackgroundColor(Color.WHITE);
+                st.setTextColor(getResources().getColor(R.color.colorToolbar));
+                st.setBoldText();
+                st.setIcon(R.mipmap.ic_update_toast);
+                st.spinIcon();
+                st.setMaxAlpha();
+                st.show();
                 updateUI();
             }
         });

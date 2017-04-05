@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="ld_activityScreenTitles">
+        <item>Каталоги</item>
+        <item>Как сделать</item>
+        <item>Поблизости</item>
+        <item>Пинус</item>
+        <item />
+        <item>Выйти</item>
+    </string-array>
+
+    <array name="ld_activityScreenIcons">
+        <item>@drawable/ic_fillstar</item>
+        <item>@drawable/ic_fillstar</item>
+        <item>@drawable/ic_fillstar</item>
+        <item>@drawable/ic_fillstar</item>
+        <item>0</item>
+        <item>@drawable/ic_fillstar</item>
+    </array>
+
+</resources>

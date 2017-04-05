@@ -7,4 +7,5 @@
         <item>Табаки</item>
         <item>миксы</item>
     </string-array>
+    <string name="title_activity_google_maps">Map</string>
 </resources>

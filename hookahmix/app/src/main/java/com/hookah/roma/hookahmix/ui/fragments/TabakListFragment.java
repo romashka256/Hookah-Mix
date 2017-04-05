@@ -82,7 +82,7 @@ public class TabakListFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        JSONHelper.exportToJSON(getActivity(),mTabaks);
+        JSONHelper.exportToJSON(mTabaks);
     }
 
     private class TabakHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -118,17 +118,28 @@ public class TabakListFragment extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     Tabak tabak = mTabaks.get(getAdapterPosition());
+
+
                     if (isChecked) {
                         tabak.setIsfavourite("1");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
-                        mMyTabaks.add(mMyTabaks.size(), tabak);
+                        if (!mMyTabaks.contains(tabak)) {
+                            mMyTabaks.add(mMyTabaks.size(), tabak);
+                        } 
 
                     } else {
+                      //  int k = 0;
                         tabak.setIsfavourite(null);
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                        for(Tabak tabaker : mMyTabaks) {
-                            if (tabaker.getName().equals(tabak.getName())) {
-                                mMyTabaks.remove(tabaker);
+                        if(mMyTabaks.contains(tabak)) {
+                           // Iterator<Tabak> iter = mMyTabaks.iterator();
+                           // while (iter.hasNext()) {
+                           //     if(k == 0) {
+                                    if (mMyTabaks.contains(tabak)) {
+                                        mMyTabaks.remove(tabak);
+                                   //     iter.remove();}
+                         //           k = 1;
+                           //     }
                             }
                         }
                     }

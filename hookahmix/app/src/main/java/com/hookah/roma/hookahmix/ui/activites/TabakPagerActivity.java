@@ -21,6 +21,7 @@ import java.util.List;
 public class TabakPagerActivity extends AppCompatActivity {
     private static final String EXTRA_TABAK_NAME = "com.hookah.roma.hookahmix.name";
     private List<Tabak> mTabaks;
+    private Tabak mCurTabak;
     private Toolbar mToolBar;
 
     @Override

@@ -1,7 +1,6 @@
 package com.hookah.roma.hookahmix;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -46,20 +45,21 @@ public class JSONHelper {
     }
     */
 
-    public static void exportToJSON(Context context,List<Tabak> tabakList) {
-        try {
-            Gson gson = new Gson();
-            gson.toJson(tabakList);
-            DataItems dataItems = new DataItems();
-            dataItems.setTabaks(tabakList);
-            String jsonString = gson.toJson(dataItems);
-            FileWriter file = new FileWriter(context.getFilesDir().getPath() + "/" + FILE_NAME);
-            file.write(jsonString);
-            file.flush();
-            file.close();
-        } catch (IOException e) {
-            Log.e("TAG", "Error in Writing: " + e.getLocalizedMessage());
+    public static void exportToJSON(List<Tabak> tabakList) {
+
+        Gson gson = new Gson();
+        StringBuilder sb = new StringBuilder();
+        for(Tabak tabak : tabakList){
+            sb.append(gson.toJson(tabak));
         }
+        try {
+            FileWriter file = new FileWriter("F:/Hookah-Mix/HookahMix/app/src/main/res/raw/tabaks.json");
+            file.write(sb.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     /* public static List<Tabak> importFromJSON(Context context){
@@ -97,25 +97,25 @@ public class JSONHelper {
      } */
     public static List<Tabak> importFromJSON(Context context) {
 
-            InputStream raw = context.getResources().openRawResource(R.raw.tabaks);
-            Reader reader = new BufferedReader(new InputStreamReader(raw));
-            Tabak listOfTabaks = new Gson().fromJson(reader, Tabak.class);
-            List<Tabak> tabakList = listOfTabaks.getTabaksArrayList();
-            return tabakList;
+        InputStream raw = context.getResources().openRawResource(R.raw.tabaks);
+        Reader reader = new BufferedReader(new InputStreamReader(raw));
+        Tabak listOfTabaks = new Gson().fromJson(reader, Tabak.class);
+        List<Tabak> tabakList = listOfTabaks.getTabaksArrayList();
+        return tabakList;
 
     }
 
-private static class DataItems {
-    private List<Tabak> tabaks;
+    private static class DataItems {
+        private List<Tabak> tabaks;
 
-    List<Tabak> getTabaks() {
-        return tabaks;
-    }
+        List<Tabak> getTabaks() {
+            return tabaks;
+        }
 
-    void setTabaks(List<Tabak> tabaks) {
-        this.tabaks = tabaks;
+        void setTabaks(List<Tabak> tabaks) {
+            this.tabaks = tabaks;
+        }
     }
-}
 }
 
 

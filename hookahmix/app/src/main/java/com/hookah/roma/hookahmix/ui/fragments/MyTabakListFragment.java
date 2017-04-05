@@ -2,26 +2,29 @@ package com.hookah.roma.hookahmix.ui.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.Tabak;
 import com.hookah.roma.hookahmix.ui.activites.TabakPagerActivity;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -31,7 +34,7 @@ public class MyTabakListFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private TextView mEmptyView;
-    private Button mUpdateButton;
+    private FloatingActionButton mUpdateButton;
     private Tabak mTabak;
     private List<Tabak> mTabaks;
     public TabakAdapter mAdapter;
@@ -48,11 +51,21 @@ public class MyTabakListFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) v.findViewById(R.id.my_lst_tabaks);
         mEmptyView = (TextView) v.findViewById(R.id.recyclerview_is_empty_textview);
-        mUpdateButton = (Button) v.findViewById(R.id.update_button);
+        mUpdateButton = (FloatingActionButton) v.findViewById(R.id.fab);
         mUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                StyleableToast st = new StyleableToast(getContext(), "Обновлено", Toast.LENGTH_SHORT);
+                st.setBackgroundColor(Color.WHITE);
+                st.setTextColor(getResources().getColor(R.color.colorToolbar));
+                st.setBoldText();
+                st.setIcon(R.mipmap.ic_update_toast);
+                st.spinIcon();
+                st.setMaxAlpha();
+                st.show();
                 updateUI();
+                mUpdateButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -73,6 +86,7 @@ public class MyTabakListFragment extends Fragment {
         updateUI();
         mAdapter.notifyDataSetChanged();
     }
+
     public void updateUI() {
         List<Tabak> tabaks = TabakListFragment.mMyTabaks;
         mTabaks = tabaks;
@@ -132,7 +146,6 @@ public class MyTabakListFragment extends Fragment {
                         tabak.setIsfavourite(null);
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                         mTabaks.remove(getAdapterPosition());
-                        mAdapter.notifyDataSetChanged();
                     }
                 }
             });

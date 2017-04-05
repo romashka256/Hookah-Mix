@@ -1,7 +1,6 @@
 package com.hookah.roma.hookahmix.ui.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
@@ -28,7 +27,6 @@ import com.hookah.roma.hookahmix.Mix;
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.Tabak;
 import com.hookah.roma.hookahmix.TabakLab;
-import com.hookah.roma.hookahmix.ui.activites.MixListActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -72,7 +70,7 @@ public class TabakFragment extends Fragment {
 
         mTabakLab = TabakLab.get(getActivity());
         tabakName = (String) getArguments().get(EXTRA_TABAK_NAME);
-        mTabak = TabakLab.get(getActivity()).getTabak(tabakName,getActivity());
+        mTabak = TabakLab.get(getActivity()).getTabak(tabakName, getActivity());
         mMixes = mTabakLab.getMixes();
         AsynkTask task = new AsynkTask();
         task.execute();
@@ -103,7 +101,7 @@ public class TabakFragment extends Fragment {
         String secondName = mTabak.getSecond_name();
 
         int resId = context.getResources().getIdentifier(secondName, "drawable", context.getPackageName());
-        if (resId == 0){
+        if (resId == 0) {
             resId = context.getResources().getIdentifier("al_fakher", "drawable", context.getPackageName());
         }
 
@@ -141,7 +139,6 @@ public class TabakFragment extends Fragment {
         mFavouriteButton = (Button) v.findViewById(R.id.button_favourite);
 
 
-
         Drawable drawableRating = mRatingBar.getProgressDrawable();
         drawableRating.setColorFilter(Color.parseColor("#00c7af"), PorterDuff.Mode.SRC_ATOP);
 
@@ -163,8 +160,15 @@ public class TabakFragment extends Fragment {
         mFavouriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MixListActivity.class);
-                startActivity(intent);
+                //  Intent intent = new Intent(getActivity(), MixListActivity.class);
+                //  startActivity(intent);
+
+                if (TabakListFragment.mMyTabaks.contains(mTabak)) {
+                    TabakListFragment.mMyTabaks.remove(mTabak);
+                } else {
+                    TabakListFragment.mMyTabaks.add(mTabak);
+                }
+
             }
         });
 
@@ -182,7 +186,7 @@ public class TabakFragment extends Fragment {
             mAdapter.setMixes(mixList);
         }} */
 
-    private class MixWithTabakHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class MixWithTabakHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mNameTextView;
         private TextView mFamilyTextView;
@@ -212,8 +216,8 @@ public class TabakFragment extends Fragment {
             mMix = mMixes.get(getPosition());
             FragmentManager fm = getFragmentManager();
             MixDialogFragment dialog = MixDialogFragment.newInstance(mMix.getDescription());
-            dialog.setTargetFragment(TabakFragment.this,REQUEST_MIX);
-            dialog.show(fm,DIALOG_MIX);
+            dialog.setTargetFragment(TabakFragment.this, REQUEST_MIX);
+            dialog.show(fm, DIALOG_MIX);
         }
     }
 

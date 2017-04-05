@@ -58,7 +58,7 @@
         android:textColor="@color/ratingBar"
         android:layout_toRightOf="@id/mix_ratingbar_item"
         android:textSize="11sp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="44dp"
         android:layout_marginLeft="5dp"
         android:id="@+id/mix_ratingbar_int_item" />
     <View

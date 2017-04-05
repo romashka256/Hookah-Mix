@@ -23,7 +23,7 @@ public class KatalogsFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.main_activity, container, false);
+        View view = inflater.inflate(R.layout.katalog_fragment, container, false);
         super.onCreate(savedInstanceState);
 
 
@@ -38,7 +38,7 @@ public class KatalogsFragment extends Fragment{
         mNavigationTabStrip = (NavigationTabStrip) view.findViewById(R.id.nts_center);
         mNavigationTabStrip.setTypeface(notoSansBoldFont);
         mNavigationTabStrip.setTitleSize(17);
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.tool_bar_main);
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.tool_bar_katalogs);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         toolbar.setTitle(" ");
         mViewPager.setOffscreenPageLimit(4);

@@ -1,42 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cont_tabak_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </FrameLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="@drawable/toolbar_dropshadow"
         android:translationZ="10dp"/>
 
-        <Button
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@drawable/buttonshape"
-            android:drawableLeft="@mipmap/ic_update"
-            android:padding="3dp"
-            android:translationZ="30dp"
-            android:id="@+id/update_button"
-            android:layout_marginTop="435dp"
-            android:layout_marginLeft="275dp"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="133dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="20dp"
+        android:visibility="visible"
+        android:gravity="bottom|right"
+        android:src="@mipmap/ic_update"
+        app:backgroundTint="#5C6BC0"
+        app:layout_behavior="com.hookah.roma.hookahmix.ui.FAB_Hide_on_Scroll" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:textColor="@color/white"
             android:id="@+id/recyclerview_is_empty_textview"
             android:layout_centerInParent="true"
@@ -48,9 +46,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimary" />
 
-    </RelativeLayout>
 
 
 
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
