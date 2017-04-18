@@ -11,7 +11,7 @@ public class Tabak  {
         private String family;
     private String rating;
     private String description;
-    private String isfavourite;
+    private String favourite;
     private String id;
     private String second_name;
 
@@ -28,13 +28,13 @@ public class Tabak  {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setIsfavourite(String isfavourite) {this.isfavourite = isfavourite;}
+    public void setIsfavourite(String isfavourite) {this.favourite = isfavourite;}
     public void setSecond_name(String second_name){this.second_name = second_name;}
     public String getName() {
         return name;
     }
     public String getRating() {return rating;}
-    public String isfavourite() {return isfavourite;}
+    public String isfavourite() {return favourite;}
     public String getFamily() {
         return family;
     }

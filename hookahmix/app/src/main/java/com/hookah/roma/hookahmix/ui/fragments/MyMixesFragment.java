@@ -41,6 +41,7 @@ public class MyMixesFragment extends Fragment {
     private List<Tabak> mMyTabaks;
     private MixAdapter mAdapter;
     private HeightAnim heightAnim;
+    private TextView mEmptyView;
     private boolean sad;
     private Animation rotatingarrow;
     private TranslateAnimation animationDetails;
@@ -62,6 +63,9 @@ public class MyMixesFragment extends Fragment {
 
         rotatingarrow = AnimationUtils.loadAnimation(getContext(), R.anim.rotatingimageview);
         rotatingarrow.setDuration(150);
+
+        mEmptyView = (TextView) view.findViewById(R.id.recyclerview_is_empty_textview);
+        mEmptyView.setText("С Вашими табаками нет миксов");
 
         mUpdateButton = (FloatingActionButton) view.findViewById(R.id.fab);
         mUpdateButton.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +162,15 @@ public class MyMixesFragment extends Fragment {
         } else {
             mAdapter.setMixes(mMyMixes);
             mAdapter.notifyDataSetChanged();
+        }
+        Typeface notoSansBoldFont = Typeface.createFromAsset(getResources().getAssets(), "fonts/NotoSans-Bold.ttf");
+        mEmptyView.setTypeface(notoSansBoldFont);
+        if (mMyMixes.isEmpty()) {
+            mMixRecyclerView.setVisibility(View.GONE);
+            mEmptyView.setVisibility(View.VISIBLE);
+        } else {
+            mMixRecyclerView.setVisibility(View.VISIBLE);
+            mEmptyView.setVisibility(View.GONE);
         }
     }
 

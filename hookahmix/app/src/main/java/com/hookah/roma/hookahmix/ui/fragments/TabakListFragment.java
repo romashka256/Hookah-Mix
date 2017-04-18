@@ -82,7 +82,7 @@ public class TabakListFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        JSONHelper.exportToJSON(mTabaks);
+        JSONHelper.exportToJSON(getActivity(),mTabaks);
     }
 
     private class TabakHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -144,6 +144,7 @@ public class TabakListFragment extends Fragment {
                         }
                     }
                     mAdapter.setTabaks(mTabaks);
+                    JSONHelper.exportToJSON(getActivity(),mTabaks);
                 }
             });
         }
@@ -199,12 +200,12 @@ public class TabakListFragment extends Fragment {
             } else {
                 Picasso.with(context).load(R.drawable.al_fakher).resizeDimen(R.dimen.image_size_item, R.dimen.image_size_item).centerCrop().into(holder.mImageViewItem);
             }
-            if (mTabak.isfavourite() != null) {
-                holder.mCheckBox.setChecked(true);
-                holder.mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
-            } else {
+            if (mTabak.isfavourite() == null || mTabak.isfavourite().equals("0")) {
                 holder.mCheckBox.setChecked(false);
                 holder.mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            } else if(mTabak.isfavourite().equals("1") || mTabak.isfavourite() != null){
+                holder.mCheckBox.setChecked(true);
+                holder.mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
             }
         }
 

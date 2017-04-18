@@ -75,8 +75,8 @@
 
     <Button
         android:id="@+id/button_favourite"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/buttonshape"
         android:layout_marginTop="165dp"
         android:drawableTop="@mipmap/ic_plus"

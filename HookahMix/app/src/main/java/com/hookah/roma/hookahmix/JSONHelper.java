@@ -1,6 +1,7 @@
 package com.hookah.roma.hookahmix;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -45,21 +46,16 @@ public class JSONHelper {
     }
     */
 
-    public static void exportToJSON(List<Tabak> tabakList) {
-
-        Gson gson = new Gson();
-        StringBuilder sb = new StringBuilder();
-        for(Tabak tabak : tabakList){
-            sb.append(gson.toJson(tabak));
-        }
+    public static void exportToJSON(Context context, List<Tabak> mJsonResponse) {
         try {
-            FileWriter file = new FileWriter("F:/Hookah-Mix/HookahMix/app/src/main/res/raw/tabaks.json");
-            file.write(sb.toString());
+            String json = new Gson().toJson(mJsonResponse);
+            FileWriter file = new FileWriter("F:\\Hookah-Mix\\HookahMix\\app\\src\\main\\res\\raw\\tabaks.json");
+            file.write(json);
+            file.flush();
+            file.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("TAG", "Error in Writing: " + e.getLocalizedMessage());
         }
-
-
     }
 
     /* public static List<Tabak> importFromJSON(Context context){

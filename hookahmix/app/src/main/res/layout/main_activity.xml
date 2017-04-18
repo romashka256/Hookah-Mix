@@ -15,7 +15,33 @@
         android:textSize="60sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:translationZ="10dp"
         android:textColor="@color/white"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@color/colorToolbar"
+        ></View>
+
+    <View
+        android:layout_width="45dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorToolbar"
+        ></View>
+
+    <View
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@color/colorToolbar"
+        ></View>
+    <View
+        android:layout_alignParentRight="true"
+        android:layout_width="45dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorToolbar"
+        ></View>
     <Button
 
         android:textColor="@color/white"
