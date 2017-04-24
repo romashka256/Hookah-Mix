@@ -46,9 +46,8 @@ public class TabakListFragment extends Fragment {
         mTabakRecyclerView = (RecyclerView) view.findViewById(R.id.lst_tabaks);
         setHasOptionsMenu(true);
 
-        mTabaks = JSONHelper.importFromJSON(getActivity());
-
         mMyTabaks = new ArrayList<>();
+
         //Toolbar toolbar = (Toolbar) view.findViewById(R.id.tool_bar_list);
 
         //(((KatalogsFragment) getActivity()).setSupportActionBar(toolbar);
@@ -70,10 +69,10 @@ public class TabakListFragment extends Fragment {
 
     private void updateUI() {
         List<Tabak> tabakList = JSONHelper.importFromJSON(getActivity());
+        mTabaks = tabakList;
         if (mAdapter == null) {
             mAdapter = new TabakAdapter(getActivity(), tabakList);
             mTabakRecyclerView.setAdapter(mAdapter);
-
         } else {
             mAdapter.setTabaks(tabakList);
         }
@@ -118,8 +117,6 @@ public class TabakListFragment extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     Tabak tabak = mTabaks.get(getAdapterPosition());
-
-
                     if (isChecked) {
                         tabak.setIsfavourite("1");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));

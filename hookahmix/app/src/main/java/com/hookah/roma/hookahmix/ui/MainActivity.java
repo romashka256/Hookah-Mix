@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.hookah.roma.hookahmix.R;
@@ -18,22 +17,30 @@ import com.hookah.roma.hookahmix.ui.activites.KatalogsActivity;
  */
 
 public class MainActivity extends AppCompatActivity{
-
+    private TextView mNameAppTextView;
+    private TextView mKatalogsButton;
+    private TextView mRandomTextView;
+    private TextView mNearButton;
+    private TextView mDescriptionTextView;
+    public static int countOfMyTabaks;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        TextView mNameAppTextView;
-        Button mKatalogsButton;
-        Button mHowToButton;
-        Button mNearButton;
-
-        mNearButton = (Button) findViewById(R.id.near_button);
-        mKatalogsButton = (Button) findViewById(R.id.katalogs_button);
-        mNameAppTextView = (TextView) findViewById(R.id.name_app_textview);
-        Typeface notoSansBoldFont = Typeface.createFromAsset(getResources().getAssets(), "fonts/NotoSans-Bold.ttf");
+        mNearButton = (TextView) findViewById(R.id.main_button_near);
+        mRandomTextView = (TextView) findViewById(R.id.main_button_random);
+        mKatalogsButton = (TextView) findViewById(R.id.main_button_katalogs);
+        mNameAppTextView = (TextView) findViewById(R.id.main_name);
+        mDescriptionTextView = (TextView) findViewById(R.id.main_description);
+        mDescriptionTextView.setText("У вас " + countOfMyTabaks + " табаков");
+        Typeface notoSansBoldFont = Typeface.createFromAsset(getResources().getAssets(), "fonts/10091.otf");
         mNameAppTextView.setTypeface(notoSansBoldFont);
+        mNearButton.setTypeface(notoSansBoldFont);
+        mRandomTextView.setTypeface(notoSansBoldFont);
+        mKatalogsButton.setTypeface(notoSansBoldFont);
+        mDescriptionTextView.setTypeface(notoSansBoldFont);
+
 
         mKatalogsButton.setOnClickListener(new View.OnClickListener() {
             @Override

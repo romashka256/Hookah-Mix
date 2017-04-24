@@ -1,79 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:baselineAligned="false">
 
-
-    <TextView
-        android:layout_marginTop="60dp"
+    <RelativeLayout
+        android:id="@+id/main_title_description"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/name_app_textview"
-        android:lineSpacingMultiplier="0.7"
-        android:text="HOOKAH\r\n MIX"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:translationZ="10dp"
-        android:textColor="@color/white"/>
+        android:layout_height="300dp"
+        android:background="#fff">
 
-    <View
+        <TextView
+            android:id="@+id/main_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="180dp"
+            android:text="Hookah Mix"
+            android:textColor="#636b6f"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/main_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_name"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="У вас 10 табаков"
+            android:textColor="#72848c"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_block_first_button"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:background="@color/colorToolbar"
-        ></View>
+        android:layout_height="wrap_content">
 
-    <View
-        android:layout_width="45dp"
-        android:layout_height="match_parent"
-        android:background="@color/colorToolbar"
-        ></View>
+        <TextView
+            android:id="@+id/main_button_katalogs"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/colorToolbar"
+            android:paddingLeft="50dp"
+            android:paddingTop="27dp"
+            android:text="Каталоги"
+            android:textColor="#fff"
+            android:textSize="20sp" />
 
-    <View
-        android:layout_alignParentBottom="true"
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="26dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_right_arrow" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/main_block_second_button"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="@color/colorToolbar"
-        ></View>
-    <View
-        android:layout_alignParentRight="true"
-        android:layout_width="45dp"
-        android:layout_height="match_parent"
-        android:background="@color/colorToolbar"
-        ></View>
-    <Button
+        android:layout_height="wrap_content">
 
-        android:textColor="@color/white"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/buttonshaperectangle"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_below="@id/name_app_textview"
-        android:id="@+id/katalogs_button"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:text="Каталоги" />
+        <TextView
+            android:id="@+id/main_button_random"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/colorToolbar"
+            android:paddingLeft="50dp"
+            android:paddingTop="27dp"
+            android:text="Рандомный микс"
+            android:textColor="#fff"
+            android:textSize="20sp" />
 
-    <Button
-        android:textColor="@color/white"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/buttonshaperectangle"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/katalogs_button"
-        android:id="@+id/how_to_button"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:text="Как сделать" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="26dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_right_arrow" />
 
-    <Button
-        android:textColor="@color/white"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/buttonshaperectangle"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/how_to_button"
-        android:id="@+id/near_button"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:text="Кальянные поблизости" />
-</RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/main_block_third_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/main_button_near"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/colorToolbar"
+            android:paddingLeft="50dp"
+            android:paddingTop="27dp"
+            android:text="Кальянные поблизости"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="26dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_right_arrow" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/main_block_fourth_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/main_button_asd"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/colorToolbar"
+            android:paddingLeft="50dp"
+            android:paddingTop="27dp"
+            android:text="Рандомный микс"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="26dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_right_arrow" />
+
+    </RelativeLayout>
+</LinearLayout>
