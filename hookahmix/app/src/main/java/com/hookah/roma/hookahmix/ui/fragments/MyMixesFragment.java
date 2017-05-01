@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,13 +32,14 @@ import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class MyMixesFragment extends Fragment {
     private RecyclerView mMixRecyclerView;
     private Mix mMix;
     private List<Mix> mMixes;
-    private List<Mix> mMyMixes;
+    public static List<Mix> mMyMixes;
     private List<Tabak> mMyTabaks;
     private MixAdapter mAdapter;
     private HeightAnim heightAnim;
@@ -53,6 +55,13 @@ public class MyMixesFragment extends Fragment {
     public static MyMixesFragment newInstance() {
         MyMixesFragment fragment = new MyMixesFragment();
         return fragment;
+    }
+
+    public static void RandomMix(List<Mix> MixList,FragmentManager fm) {
+        Random random = new Random();
+        Mix mix = MixList.get(random.nextInt(MixList.size()));
+        MixDialogFragment fragment = MixDialogFragment.newInstance(mix.getDescription());
+        fragment.show(fm,"tag");
     }
 
 

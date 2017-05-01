@@ -5,8 +5,6 @@ import android.database.CursorWrapper;
 
 import database.TabakDbSchema;
 
-import static database.TabakDbSchema.TabakTable;
-
 /**
  * Created by Roma on 24.02.2017.
  */
@@ -17,7 +15,7 @@ public class TabakCursorWrapper extends CursorWrapper {
         super(cursor);
     }
 
-    public  Tabak getTabak(){
+   /* public  Tabak getTabak(){
         String name = getString(getColumnIndex(TabakTable.Cols.NAME));
         String description = getString(getColumnIndex(TabakTable.Cols.DESCRIPTION));
         String secondname = getString(getColumnIndex(TabakTable.Cols.SECOND_NAME));
@@ -35,7 +33,7 @@ public class TabakCursorWrapper extends CursorWrapper {
         tabak.setSecond_name(secondname);
 
         return tabak;
-    }
+    }*/
 
     public  Mix getMix(){
         String ingred1 = getString(getColumnIndex(TabakDbSchema.MixTable.Cols.INGRED1));

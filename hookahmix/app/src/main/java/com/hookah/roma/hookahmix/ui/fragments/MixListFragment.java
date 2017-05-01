@@ -34,6 +34,7 @@ public class MixListFragment extends Fragment {
     private List<Mix> mMixes;
     private MixAdapter mAdapter;
     private HeightAnim heightAnim;
+    public static List<Mix> mMyMixes;
     private boolean sad;
     private Animation rotatingarrow;
     private TranslateAnimation animationDetails;

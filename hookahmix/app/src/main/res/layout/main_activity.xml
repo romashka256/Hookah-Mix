@@ -133,7 +133,7 @@
             android:background="@color/colorToolbar"
             android:paddingLeft="50dp"
             android:paddingTop="27dp"
-            android:text="Рандомный микс"
+            android:text="Магазины с табаками"
             android:textColor="#fff"
             android:textSize="20sp" />
 

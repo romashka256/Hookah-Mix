@@ -21,13 +21,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hookah.roma.hookahmix.JSONHelper;
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.Tabak;
 import com.hookah.roma.hookahmix.ui.activites.TabakPagerActivity;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyTabakListFragment extends Fragment {
@@ -41,7 +41,14 @@ public class MyTabakListFragment extends Fragment {
 
     public static MyTabakListFragment newInstance() {
         MyTabakListFragment fragemnt = new MyTabakListFragment();
+
         return fragemnt;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mTabaks = JSONHelper.importFromJSON(getActivity());
     }
 
     @Nullable
@@ -55,7 +62,7 @@ public class MyTabakListFragment extends Fragment {
         mUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                updateUI();
                 StyleableToast st = new StyleableToast(getContext(), "Обновлено", Toast.LENGTH_SHORT);
                 st.setBackgroundColor(Color.WHITE);
                 st.setTextColor(getResources().getColor(R.color.colorToolbar));
@@ -64,12 +71,10 @@ public class MyTabakListFragment extends Fragment {
                 st.spinIcon();
                 st.setMaxAlpha();
                 st.show();
-                updateUI();
-                mUpdateButton.setVisibility(View.VISIBLE);
+
             }
         });
 
-        mTabaks = new ArrayList<>();
 
         LinearLayoutManager lm = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(lm);
@@ -83,15 +88,13 @@ public class MyTabakListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        updateUI();
         mAdapter.notifyDataSetChanged();
     }
 
     public void updateUI() {
-        List<Tabak> tabaks = TabakListFragment.mMyTabaks;
-        mTabaks = tabaks;
+        mTabaks = TabakListFragment.mMyTabaks;
         if (mAdapter == null) {
-            mAdapter = new TabakAdapter(getActivity(), tabaks);
+            mAdapter = new TabakAdapter(getActivity(), mTabaks);
             mRecyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.notifyDataSetChanged();
@@ -142,10 +145,15 @@ public class MyTabakListFragment extends Fragment {
                     if (isChecked) {
                         tabak.setIsfavourite("1");
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
+                        if (!mTabaks.contains(tabak)) {
+                            mTabaks.add(mTabaks.size(),tabak);
+                        }
                     } else {
                         tabak.setIsfavourite(null);
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                        mTabaks.remove(getAdapterPosition());
+                        if (mTabaks.contains(tabak)) {
+                            mTabaks.remove(tabak);
+                        }
                     }
                 }
             });
@@ -156,7 +164,6 @@ public class MyTabakListFragment extends Fragment {
 
         private Context context;
         private List<Tabak> mTabaks;
-
 
         public TabakAdapter(Context context, List<Tabak> tabaks) {
             this.context = context;
@@ -199,4 +206,5 @@ public class MyTabakListFragment extends Fragment {
             mTabaks = tabaks;
         }
     }
+
 }

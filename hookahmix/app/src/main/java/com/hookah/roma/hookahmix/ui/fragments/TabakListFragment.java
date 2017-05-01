@@ -2,9 +2,12 @@ package com.hookah.roma.hookahmix.ui.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 import com.hookah.roma.hookahmix.JSONHelper;
 import com.hookah.roma.hookahmix.R;
 import com.hookah.roma.hookahmix.Tabak;
+import com.hookah.roma.hookahmix.ui.MainActivity;
 import com.hookah.roma.hookahmix.ui.activites.TabakPagerActivity;
 import com.squareup.picasso.Picasso;
 
@@ -33,30 +37,30 @@ public class TabakListFragment extends Fragment {
     private TabakAdapter mAdapter;
     private List<Tabak> mTabaks;
     public static List<Tabak> mMyTabaks;
+    private LoadMixesTask task;
+    private SharedPreferences prefs;
+    private final String PREF_KEY = "count";
+    public static final String APP_PREFERENCES = "mysettings";
 
     public static TabakListFragment newInstance() {
         TabakListFragment fragment = new TabakListFragment();
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        prefs = getActivity().getSharedPreferences(APP_PREFERENCES,Context.MODE_PRIVATE);
+        mMyTabaks = new ArrayList<>();
+        task = new LoadMixesTask();
+        task.execute(JSONHelper.importFromJSON(getActivity()));
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tabaks_list, container, false);
         mTabakRecyclerView = (RecyclerView) view.findViewById(R.id.lst_tabaks);
         setHasOptionsMenu(true);
-
-        mMyTabaks = new ArrayList<>();
-
-        //Toolbar toolbar = (Toolbar) view.findViewById(R.id.tool_bar_list);
-
-        //(((KatalogsFragment) getActivity()).setSupportActionBar(toolbar);
-        //(((KatalogsFragment) getActivity()).getSupportActionBar().setTitle("");
-        //((KatalogsFragment) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //((KatalogsFragment) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
-
-        //TextView mTitle = (TextView) view.findViewById(R.id.textViewofToolBar);
-        //mTitle.setText("Страница табаков");
 
         LinearLayoutManager lm = new LinearLayoutManager(getActivity());
         mTabakRecyclerView.setLayoutManager(lm);
@@ -81,7 +85,16 @@ public class TabakListFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        JSONHelper.exportToJSON(getActivity(),mTabaks);
+        JSONHelper.exportToJSON(getActivity(), mTabaks);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(PREF_KEY, MainActivity.countOfMyTabaks);
+        editor.apply();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
     }
 
     private class TabakHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -122,30 +135,22 @@ public class TabakListFragment extends Fragment {
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
                         if (!mMyTabaks.contains(tabak)) {
                             mMyTabaks.add(mMyTabaks.size(), tabak);
-                        } 
+                            MainActivity.countOfMyTabaks++;
+                        }
 
                     } else {
-                      //  int k = 0;
                         tabak.setIsfavourite(null);
                         mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                        if(mMyTabaks.contains(tabak)) {
-                           // Iterator<Tabak> iter = mMyTabaks.iterator();
-                           // while (iter.hasNext()) {
-                           //     if(k == 0) {
-                                    if (mMyTabaks.contains(tabak)) {
-                                        mMyTabaks.remove(tabak);
-                                   //     iter.remove();}
-                         //           k = 1;
-                           //     }
-                            }
+                        if (mMyTabaks.contains(tabak)) {
+                            mMyTabaks.remove(tabak);
+                            MainActivity.countOfMyTabaks--;
                         }
                     }
                     mAdapter.setTabaks(mTabaks);
-                    JSONHelper.exportToJSON(getActivity(),mTabaks);
+                    JSONHelper.exportToJSON(getActivity(), mTabaks);
                 }
             });
         }
-
 
 
         @Override
@@ -182,6 +187,7 @@ public class TabakListFragment extends Fragment {
             View view = inflater.inflate(R.layout.tabak_item, parent, false);
             return new TabakHolder(view);
         }
+
         @Override
         public void onBindViewHolder(TabakHolder holder, int position) {
             Tabak tabak = mTabaks.get(position);
@@ -200,12 +206,11 @@ public class TabakListFragment extends Fragment {
             if (mTabak.isfavourite() == null || mTabak.isfavourite().equals("0")) {
                 holder.mCheckBox.setChecked(false);
                 holder.mItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            } else if(mTabak.isfavourite().equals("1") || mTabak.isfavourite() != null){
+            } else if (mTabak.isfavourite().equals("1") || mTabak.isfavourite() != null) {
                 holder.mCheckBox.setChecked(true);
                 holder.mItem.setBackgroundColor(getResources().getColor(R.color.colorToolbar));
             }
         }
-
 
 
         public void setTabaks(List<Tabak> tabaks) {
@@ -215,6 +220,27 @@ public class TabakListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mTabaks.size();
+        }
+    }
+
+    private class LoadMixesTask extends AsyncTask<List<Tabak>, Void, List<Tabak>> {
+
+        @Override
+        protected List<Tabak> doInBackground(List<Tabak>... tabaks) {
+            MainActivity.countOfMyTabaks = 0;
+
+            List<Tabak> listTabaks = tabaks[0];
+            List<Tabak> mCurMyTabaks = new ArrayList<>();
+            for (Tabak tabak : listTabaks) {
+                if (tabak.isfavourite() == null || tabak.isfavourite().equals("0")) {
+                    continue;
+                } else {
+                    mCurMyTabaks.add(tabak);
+                    MainActivity.countOfMyTabaks++;
+                }
+            }
+            mMyTabaks.addAll(mCurMyTabaks);
+            return mMyTabaks;
         }
     }
 }
